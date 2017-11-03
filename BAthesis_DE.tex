@@ -7,7 +7,7 @@
 % !TeX spellcheck = de_DE
 % !BIB program = biber
 
-\documentclass[master,german]{hgbthesis}
+\documentclass[bachelor,german]{hgbthesis}
 % Zulässige Optionen in [..]: 
 %   Typ der Arbeit: diploma, master (default), bachelor, internship 
 %   Hauptsprache: german (default), english
@@ -24,18 +24,18 @@
 %%%----------------------------------------------------------
 
 %%% Einträge für ALLE Arbeiten: -----------------------------
-\title{Partielle Lösungen zur allgemeinen Problematik}
-\author{Peter A.\ Schlaumeier}
-\programname{Universal Computing}
+\title{Webkomponenten zur Entwicklung von Serveranwendungen }
+\author{Andreas Hahn}
+\programname{Medientechnik und -design}
 \placeofstudy{Hagenberg}
-\dateofsubmission{2017}{02}{28}	% {YYYY}{MM}{DD}
+\dateofsubmission{2018}{02}{28}	% {YYYY}{MM}{DD}
 
 %%% Zusätzlich für eine Bachelorarbeit: ---------------------
-\thesisnumber{XXXXXXXXXX-A}   % Stud-ID, z.B. 1310238045-A  
+\thesisnumber{S1510238020-A}   % Stud-ID, z.B. 1310238045-A  
 % (A = 1. Bachelorarbeit)
-\semester{Sommersemester 2016} 
-\coursetitle{Einführung in die Tiefere Problematik 1} 
-\advisor{Alois B.~Treuer, Päd.\ Phil.}
+\semester{Sommersemester 2017} 
+\coursetitle{Bachelorarbeit 1} 
+\advisor{Rimbert Rudisch-Sommer}
 
 %%% Restriktive Lizenformel anstatt CC (nur für Typ master) -
 %\strictlicense
@@ -51,38 +51,35 @@
 \maketitle
 \tableofcontents
 
-\include{thesis_DE/front/vorwort} % Optional. Ggf. weglassen
-\include{thesis_DE/front/kurzfassung}		
-\include{thesis_DE/front/abstract}			
+\include{front/vorwort} % Optional. Ggf. weglassen
+\include{front/kurzfassung}		
+\include{front/abstract}			
 
 %%%----------------------------------------------------------
 \mainmatter          % Hauptteil (ab hier arab. Seitenzahlen)
 %%%----------------------------------------------------------
 
-\include{thesis_DE/chapters/einleitung}
-\include{thesis_DE/chapters/abschlussarbeit}
-\include{thesis_DE/chapters/latex}
-\include{thesis_DE/chapters/abbildungen}
-\include{thesis_DE/chapters/mathematik}
-\include{thesis_DE/chapters/literatur}
-\include{thesis_DE/chapters/drucken}
-\include{thesis_DE/chapters/schluss}
+\include{chapters/expose}
+\include{chapters/stateoftheart}
+\include{chapters/basicconcept}
+\include{chapters/implementation}
+\include{chapters/evaluation}
+\include{chapters/recap}
+
 
 %%%----------------------------------------------------------
-\appendix                                            % Anhang 
+%\appendix                                            % Anhang 
 %%%----------------------------------------------------------
 
-\include{thesis_DE/back/anhang_a}	% Technische Ergänzungen
-\include{thesis_DE/back/anhang_b}	% Inhalt der CD-ROM/DVD
-\include{thesis_DE/back/anhang_c}	% Chronologische Liste der Änderungen
-\include{thesis_DE/back/anhang_d}	% Quelltext dieses Dokuments
+%\include{thesis_DE/back/anhang_a}	% Technische Ergänzungen
+%\include{thesis_DE/back/anhang_b}	% Inhalt der CD-ROM/DVD
+%\include{thesis_DE/back/anhang_c}	% Chronologische Liste der Änderungen
+%\include{thesis_DE/back/anhang_d}	% Quelltext dieses Dokuments
 
 %%%----------------------------------------------------------
 \MakeBibliography                        % Quellenverzeichnis
 %%%----------------------------------------------------------
 
-%%% Messbox zur Druckkontrolle ------------------------------
-\include{thesis_DE/back/messbox}
 
 %%%----------------------------------------------------------
 \end{document}

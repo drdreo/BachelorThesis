@@ -1,0 +1,44 @@
+\chapter{Motivation}
+
+\section{Einleitung}
+
+%evt falsch
+%TODO cite fragen, ob Juli 2017 passt wenn der text aus 2015 ist
+Die Idee, die Webprogrammierung komponentenorientiert zu gestalten, gibt es seit 1998 \cite{microsoft-webcomponents}. Jedoch hat sich keine dieser Ideen bis heute durchgesetzt.
+Seit einigen Jahren gibt es dazu wieder Ansätze, welche von größeren Firmen, wie beispielsweise Google mit Anuglar\footnote{https://angular.io/} oder Facebook mit React\footnote{https://facebook.github.io/react/}, mittels eigen entwickelten komponentenbasierten Frameworks versuchen, die Webentwicklung voran zu treiben. 
+Allerdings ist seit neuestem die grundlegende Idee der nativen Webkomponenten\footnote{https://www.webcomponents.org/}, welche künftig nur als Webkomponenten bezeichnet werden, zurück. Da diese, sobald gängige Webbrowser alle Technologien von Webkomponenten -- HTML Imports, Templates, Custom Elements, Shadow DOM -- unterstützen, einen weiteren Schritt in standardisierte, wiederverwendbare und unabhängige Webbausteine bedeutet. Zur Zeit ist es noch nicht, oder erschwert möglich, clientseitig und  serverseitig auf Webkomponenten zu setzen.
+Diese Bachelorarbeit beleuchtet jene Problematik und stellt Lösungsvorschläge anhand eines konkreten Content-Management-System dar.
+
+
+\section{Theoretischer Hintergrund und Stand der Forschung}
+\label{sec:hintergrund}
+
+Ein Content-Management-System (CMS) ist ein System, welches den NutzerInnen entsprechende Inhalte verwalten lässt. Seien es beispielsweise die Kunden, die Projekte oder aber interne Statistiken einer Firma. BenutzerInnen mit Zugriffsrechten können dieses System meist ohne Programmier- oder HTML-Kenntnisse bedienen.
+Angular oder React wären für die Umsetzung eines solchen CMS geeignet. Aus heutiger Sicht zählen diese Technologien zu den gängigsten Frameworks und werden von zahlreichen EntwicklerInnen stetig verbessert.
+Diese besagten Frameworks sind mit einer steilen Lernkurve behaftet und benötigen Zeit um sich damit vertraut zu machen.
+
+Im Gegensatz dazu sind Webkomponenten logisch deklariert und bauen lediglich auf Kenntnissen von nativem HTML, CSS und Javascript auf. Die Unterstützung wird noch nicht von jedem Browser gewährleistet, was einige EntwicklerInnen noch zögern lässt um komplett auf Webkomponenten zu setzen.
+Google hat mit Polymer\footnote{https://www.polymer-project.org/} eine Javascript-Bibliothek geschaffen, welche die Kreierung und Nutzung von Webkomponenten ungemein vereinfacht. Darüber hinaus nutzt diese Bibliothek Polyfills, was die Funktionen, welche Polymer benötigt, bei Bedarf liefert und wird dadurch nicht nur in allen gängigen Webbrowsern -- Chrome, Firefox, Edge, Safari --  sondern auch in deren älteren Versionen, die die notwendigen Funktionen nicht implementiert haben, unterstützt \cite{polymer-compatibility}. Native Browserunterstützung ist bereits bei den meisten in Entwicklung und würde Polyfills überflüssig machen.  
+  
+%TODO mehr über CMS im Stand der Technik schreiben
+\section{Forschungsfrage}
+
+Aus diesen Ansätzen ergibt sich die folgende Forschungsfrage für diese Bachelorarbeit:
+
+\begin{quote}
+Wie muss ein CMS programmatisch konzipiert werden, um die grundlegenden Funktionen weitgehend mittels server- und clientseitigen Webkomponenten zu realisieren.
+\end{quote}
+
+\section{Methodik}
+
+Um diese Frage zu beantworten, soll die Bachelorarbeit als eine Kombination von Literaturarbeit und praktischer \bzw prototypischer Umsetzung realisiert werden.
+
+Zunächst soll aus bestehender Literatur (erweiternd zu Abschnitt \ref{sec:hintergrund}) erörtert werden, wie mit dem Thema der Webkomponenten umgegangen wird, und wie mit komponentenorientierte Frameworks. Gemeinsame Faktoren wie Mechaniken sollen daraus extrahiert werden und als Grundlage für ein eigenes, theoretisches Konzept dienen. Die Vorteile und Limitierungen von Webkomponenten werden dabei erörtert. Dieses Konzept soll schlussendlich eine Liste von Kerntechniken enthalten, welche eine Umsetzung eines CMS mittels Webkomponenten ermöglicht.
+
+Überprüft soll die Anwendbarkeit dieses Konzept durch einen eigenen, im Rahmen des fünften Semesters entwickelten, Prototypen werden.
+
+\section{Erwartete Ergebnisse}
+
+Als konkretes Ergebnis wird ein Gerüst mit Webkomponenten erstellt, welches als Grundlage für die Erstellung eines CMS dienen soll. Es wird erwartet, dass sich solche konkreten Techniken finden und umsetzen lassen.
+
+Bei den Tests der praktischen Umsetzung der Webkomponenten in einem CMS wird ebenfalls eine positive Evaluierung erwartet, da es bereits erfolgreiche Konzepte basierend auf server- und clientseitigen Webkomponenten gibt, auf deren Erfahrungen aufgebaut werden kann.

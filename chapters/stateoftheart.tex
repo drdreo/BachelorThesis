@@ -1,7 +1,22 @@
 \chapter{State of the Art}
 
 \section{Verwendung von Komponenten im Web}
+\label{cha:component_usage}
+%TODO How to gender EntwicklerIn, der/des entwicklers?
+Das Web besteht aus Blöcken, sogenannten Komponenten. Wenn EntwicklerInnen beispielsweise einen Link mittels einem a-Tag nutzen, wird erwartet, dass dieser sich wie ein Link-Element verhält. Dieses Element hat seine eigene standardmäßige blaue Farbe, einen Handzeiger bei hover und vor allem die Funktionalität, dass bei einem Klick auf das Element zu einer neuen URL weitergeleitet wird. Dieses Verhalten und Styling wird ohne jegliches einwirken des/der EntwicklerIn bereitgestellt. Jedes HTML Element funktioniert nach diesem Prinzip, welches HTML Code einfacher zu schreiben, aber auch verständlicher macht.
+Durch Kombination solcher Elemente, mit eigens definierten Stylesheets können komplexere Gerüste aus HTML Elementen, mit komplexeren CSS/Javascript entstehen.
+Damit nicht ein/eine EntwicklerIn die komplette Struktur im Kopf behalten muss, und bei Problemen nur diese/r das aufgetretene Problem beheben kann, hat sich bewehrt, Code in kleine, überschaubare Teile herunter zu brechen. In Einheiten, welche das gesamte Gerüst wartbar machen. Diese Einheiten können einfachere Funktionen, Module, Komponenten oder aber viele andere Ansätze sein, welche komplexe Strukturen in atomare Einzelteile aufteilen. 
 
-\section{Nutzen von Webkomponenten}
 
-\section{Aktuelle Stack-Technologien}
+\section{Webkomponenten}
+Webkomponenten bestehen aus 4 Bestandteilen: 
+\begin{itemize}  
+	\item Custom Elements - APIs um neue HTML Elemente zu definieren
+	\item HTML Imports - deklarative Methode um HTML Dokumente in andere zu importieren
+	\item HTML Templates - <template> Element, welches Dokumenten eigenen DOM erlaubt
+	\item Shadow DOM - DOM und Styling abkapseln
+\end{itemize}
+An einer Standardisierung der Webkomponenten wird bereits Seiten der W3C gearbeitet. Mehr dazu findet sich in \cite{w3c-components}. Jedoch um diese derzeitig in allen größeren Browsern zu nutzen gibt es sogenannte Polyfills \cite{polyfill}. Dieses Polyfill ist ein Codestück, welches Technologie zur Verfügung stellt, die der Browser nicht nativ unterstützt. 
+Wie der Name -- Webkomponente -- suggeriert, ermöglicht diese Technologie die Webentwicklung in kleinere, wiederverwendbare, modulare Container zu "`komponentisieren"'.  Der klare Vorteil besteht darin, dass diese Komponenten unabhängig von einem Framework, vollständig mit "`vanilla"' HTML, CSS und Javascript kreiert werden können und wie in Kap.~\ref{cha:component_usage} erwähnt, Code wartbar machen.
+
+\section{Komponentenorientierte Frameworks}

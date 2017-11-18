@@ -1,22 +1,159 @@
 \chapter{State of the Art}
+\label{cha:StateOfTheArt}
+In diesem Abschnitt wird lediglich auf den Stand der Dinge eingegangen, um einen groben Überblick zu verschaffen und nicht auf die Einzelheiten oder die Umsetzung jeder/jedes Bibliothek/Frameworks im Detail. Dazu lassen sich weitaus geeignetere Arbeiten finden.
 
-\section{Verwendung von Komponenten im Web}
-\label{cha:component_usage}
-%TODO How to gender EntwicklerIn, der/des entwicklers?
-Das Web besteht aus Blöcken, sogenannten Komponenten. Wenn EntwicklerInnen beispielsweise einen Link mittels einem a-Tag nutzen, wird erwartet, dass dieser sich wie ein Link-Element verhält. Dieses Element hat seine eigene standardmäßige blaue Farbe, einen Handzeiger bei hover und vor allem die Funktionalität, dass bei einem Klick auf das Element zu einer neuen URL weitergeleitet wird. Dieses Verhalten und Styling wird ohne jegliches einwirken des/der EntwicklerIn bereitgestellt. Jedes HTML Element funktioniert nach diesem Prinzip, welches HTML Code einfacher zu schreiben, aber auch verständlicher macht.
-Durch Kombination solcher Elemente, mit eigens definierten Stylesheets können komplexere Gerüste aus HTML Elementen, mit komplexeren CSS/Javascript entstehen.
-Damit nicht ein/eine EntwicklerIn die komplette Struktur im Kopf behalten muss, und bei Problemen nur diese/r das aufgetretene Problem beheben kann, hat sich bewehrt, Code in kleine, überschaubare Teile herunter zu brechen. In Einheiten, welche das gesamte Gerüst wartbar machen. Diese Einheiten können einfachere Funktionen, Module, Komponenten oder aber viele andere Ansätze sein, welche komplexe Strukturen in atomare Einzelteile aufteilen. 
+\subsection{Angular}
+Angular ist ein TypeScript basierendes Framework. Entwickelt und gewartet von Google, beschrieben als "`Superheroic JavaScript MVW Framework"'. Angular (auch "`Angular 2+"', "`Angular 2"' oder "`ng2"') ist der von Grund auf neu geschriebene, größtenteils inkompatibler Nachfolger von AngularJS (auch "`Angular.js"' oder "`AngularJS 1.x"').
+AngularJS wurde im Oktober 2010 veröffentlicht und bekommt weiterhin bug-fixes, etc. -- das neue Angular wurde im September 2016 als Version 2 veröffentlicht. Die aktuellste Version ist 4.3.6 (Stand 23. August 2017). Die Versionsnummer 3 wurde übersprungen, da eines der NPM-Pakete von Angular 2 bereits die Version v3.3.0 trug\footnote{http://angularjs.blogspot.co.at/2016/12/ok-let-me-explain-its-going-to-be.html}.
 
+\subsubsection{Angular Komponente}
+Das Kernkonzept von Angular ist die Komponenten. Eine komplette Angular Anwendung kann als Baum aus diesen Komponenten modelliert werden.
+Die Definition aus der Angular Dokumentation \cite{angular-component}: 
+\begin{quote}
+	\begin{english}
+	\textit{A component controls a patch of screen called a view. You define a component's application logic—what it does to support the view—inside a class. The class interacts with the view through an API of properties and methods.}
+	\end{english}
+\end{quote}
 
-\section{Webkomponenten}
-Webkomponenten bestehen aus 4 Bestandteilen: 
-\begin{itemize}  
-	\item Custom Elements - APIs um neue HTML Elemente zu definieren
-	\item HTML Imports - deklarative Methode um HTML Dokumente in andere zu importieren
-	\item HTML Templates - <template> Element, welches Dokumenten eigenen DOM erlaubt
-	\item Shadow DOM - DOM und Styling abkapseln
+\begin{JsCode}
+	import { Component } from '@angular/core';
+	
+	@Component({
+		selector: 'hello-world',
+		template: '<p>Hello, {{text}}!</p>',
+	})
+	export class HelloComponent {
+		text: string;
+		constructor() {
+			this.text = 'World';
+		}
+	}
+\end{JsCode}
+Angewendet wird diese Komponente wie folgt:
+\begin{JsCode}[numbers=none]
+	<hello-world></hello-world>
+\end{JsCode}
+Was folgende Ausgabe rendert:
+\begin{JsCode}[numbers=none]
+	<p>Hello World</p>
+\end{JsCode}
+
+\subsection{Polymer }
+Polymer (auch "`Polymer-Project"') ist eine Open Source Javascript-Bibliothek zur Erstellung von Webanwendungen mit Webkomponenten. Erstmals erschienen am 29. Mai 2015 und  wird -- ebenso wie Angular -- von Google entwickelt. Der letzte stabile Release war am 18. Oktober 2017 mit der Version 2.2.0.\\
+
+\subsubsection{Polymer Komponente}
+Polymer baut auf der Custom-Element Spezifikation auf und fügt dem eine Reihe an Features hinzu wie beispielsweise \cite{polymer-elements}:
+\begin{quote}
+\begin{itemize}
+	\item Instanzmethoden für allgemeine Aufgaben
+	\item Automatisierung für die Handhabung von Eigenschaften und Attributen, z. B. das Festlegen einer Eigenschaft basierend auf dem entsprechenden Attribut.
+	\item Erstellen von Shadow DOM Bäumen für Elementinstanzen basierend auf einem <template>.
+	\item Ein Datensystem, welches Datenbindung, Observers für Eigenschaftenänderungen und berechnete Eigenschaften unterstützt.
 \end{itemize}
-An einer Standardisierung der Webkomponenten wird bereits Seiten der W3C gearbeitet. Mehr dazu findet sich in \cite{w3c-components}. Jedoch um diese derzeitig in allen größeren Browsern zu nutzen gibt es sogenannte Polyfills \cite{polyfill}. Dieses Polyfill ist ein Codestück, welches Technologie zur Verfügung stellt, die der Browser nicht nativ unterstützt. 
-Wie der Name -- Webkomponente -- suggeriert, ermöglicht diese Technologie die Webentwicklung in kleinere, wiederverwendbare, modulare Container zu "`komponentisieren"'.  Der klare Vorteil besteht darin, dass diese Komponenten unabhängig von einem Framework, vollständig mit "`vanilla"' HTML, CSS und Javascript kreiert werden können und wie in Kap.~\ref{cha:component_usage} erwähnt, Code wartbar machen.
+\end{quote}
+\begin{JsCode}
+<link rel='import' href='bower_components/polymer/polymer.html'>
+<dom-module id='hello-world'>
+	<template>
+		<p>Hello {{text}}</p>
+	</template>
+	<script>
+		class HelloWorld extends Polymer.Element {
+			static get is() {
+				return 'hello-world';
+			}
+			constructor() {
+				super();
+				this.text = 'World';
+			}
+		}
+		customElements.define(HelloWorld.is, HelloWorld);
+	</script>
+</dom-module>
+\end{JsCode}
+Angewendet wird diese Komponente wie folgt:
+\begin{JsCode}[numbers=none]
+	<link rel='import' href='hello-world.html'>
+	<hello-world></hello-world>
+\end{JsCode}
+Was folgende Ausgabe rendert:
+\begin{JsCode}[numbers=none]
+	<p>Hello World</p>
+\end{JsCode}
 
-\section{Komponentenorientierte Frameworks}
+\subsection{React}
+React (auch "`React.js"' oder "`ReactJS"') wird als "`JavaScript Bibliothek zur Entwicklung von User-Interfaces"'\footnote{https://reactjs.org/blog/2013/06/05/why-react.html} bezeichnet. Es wurde erstmals im März 2013 von Facebook veröffentlicht -- zuvor nur firmenintern verwendet -- und wird seither entwickelt und gewartet. Die neuste Version (Stand 26. September 2017) ist 16.0.0.
+
+\subsubsection{React Komponente}
+Aus der Sicht von React sind Komponenten ident mit Javascript Funktionen. Sie können beliebig viele Inputs ("`props"' genannt) besitzen und geben React Elemente zurück die beschreiben, was am Bildschirm ausgegeben werden soll.
+Die Definition der React Dokumentation \cite{react-component}: 
+\begin{quote}
+	\begin{english}
+		\textit{Components let you split the UI into independent, reusable pieces, and think about each piece in isolation.}
+	\end{english}
+\end{quote}
+
+\begin{JsCode}
+	import React, {Component} from "react";
+	
+	class HelloWorld extends Component {
+		text = '';
+		constructor(props) {
+			super(props);
+			this.text = 'World';
+		}
+		
+		render() {
+			return <p>Hello {this.text}</p>;
+		}
+	}
+	export default HelloWorld;
+\end{JsCode}
+
+Angewandt wird diese Komponente wie folgt:
+\begin{JsCode}[numbers=none]
+	import Hello from './HelloWorld';
+	<Hello/>
+\end{JsCode}
+Was folgende Ausgabe erzeugt:
+\begin{JsCode}[numbers=none]
+<p>Hello World</p>
+\end{JsCode}
+
+\subsection{Vue }
+Vue (englische Aussprache [/vju/]) (auch "`Vue.js"' genannt) beschreibt sich selbst als ein "`progressives Framework zur Entwicklung von User-Interfaces"'\footnote{https://vuejs.org/v2/guide/}. Vue wurde im Februar 2014 vom Ex-Google-Mitarbeiter Evan You veröffentlicht. Ein markantes Merkmal von Vue ist, dass es hauptsächlich von einer einzelnen Person ohne die Stütze einer großen Firma erschaffen wurde. Nur ein paar EntwicklerInnen arbeiten für Evan an der Weiterentwicklung des Frameworks. Die aktuellste Version ist 2.5.2 (Stand 13. Oktober 2017).
+
+\subsubsection{Vue Komponente}
+Die Definition der Vue Dokumentation \cite{vue-component}: 
+\begin{quote}
+	\begin{english}
+		\textit{Components are one of the most powerful features of Vue. They help you extend basic HTML elements to encapsulate reusable code. At a high level, components are custom elements that Vue’s compiler attaches behavior to. In some cases, they may also appear as a native HTML element extended with the special is attribute.}
+	\end{english}
+\end{quote}
+
+\begin{JsCode}
+// register
+Vue.component('hello-world', {
+	template: '<p>Hello {{ text }} </p>',
+	data: function () {
+		return {text:"World"};
+	}
+})
+// root instance
+new Vue({
+	el: '#container'
+})
+\end{JsCode}
+
+Angewandt wird diese Komponente wie folgt:
+\begin{JsCode}[numbers=none]
+<div id="container">
+	<hello-world></hello-world>
+</div>
+\end{JsCode}
+Was folgende Ausgabe erzeugt:
+\begin{JsCode}[numbers=none]
+<div id="container">
+	<p>Hello World </p>
+</div>
+\end{JsCode}

@@ -1,0 +1,42 @@
+\chapter{Technische Grundlagen}
+
+\section{Verwendung von Komponenten im Web}
+\label{cha:component_usage}
+%TODO How to gender EntwicklerIn, der/des entwicklers?
+%TODO Darf man das Beispiel 1:1 reproduzieren ?
+Das Web besteht aus Bausteinen, sogenannten Elementen. Wenn EntwicklerInnen beispielsweise einen Link mittels einem a-Tag nutzen, wird erwartet, dass dieser sich wie ein Link-Element verhält. Dieses Element hat seine eigene standardmäßige blaue Farbe, einen Handzeiger bei hover und vor allem die Funktionalität, dass bei einem Klick auf das Element zu einer neuen URL weitergeleitet wird. Dieses Verhalten und Styling wird ohne jegliches einwirken des/der EntwicklerIn bereitgestellt. Jedes HTML Element funktioniert nach diesem Prinzip, welches HTML Code einfacher zu schreiben, aber auch verständlicher macht.
+Durch Kombination solcher Elemente, mit eigens definierten Stylesheets können komplexere Gerüste aus HTML Elementen, mit komplexeren CSS/Javascript entstehen.
+Damit nicht ein/eine EntwicklerIn die komplette Struktur im Kopf behalten muss, und bei Problemen nur diese/r das aufgetretene Problem beheben kann, hat sich bewehrt, Code in kleine, überschaubare Teile herunter zu brechen, in Einheiten, welche das gesamte Gerüst wartbar machen. Diese Teile können einfachere Funktionen, Module, Komponenten oder aber viele andere Ansätze sein, welche komplexe Strukturen in atomare Einzelteile aufteilen \cite{components-benefit}.
+
+Um also die Definition der, in dieser Arbeit fokussierten Technologie -- einer Komponente -- zusammen zu fassen: Eine entkoppelte Sammlung von Funktionalität oder Prozessen und Logik, mit einer verständlichen Schnittstelle oder API um des Komponenten Funktionalität abzurufen.
+
+\section{Webkomponenten}
+Webkomponenten bestehen aus 4 Bestandteilen:
+\begin{itemize}
+	\item Custom Elements - APIs um neue HTML Elemente zu definieren
+	\item HTML Imports - deklarative Methode um HTML Dokumente in andere zu importieren
+	\item HTML Templates - <template> Element, welches Dokumenten eigenen DOM ermöglicht
+	\item Shadow DOM - DOM und Styling abkapseln
+\end{itemize}
+An einer Standardisierung der Webkomponenten wird bereits Seiten der W3C gearbeitet. Mehr dazu findet sich in \cite{w3c-components}. Jedoch um diese derzeitig in allen größeren Browsern zu nutzen gibt es sogenannte Polyfills \cite{polyfill}. Dieses Polyfill ist ein Codestück, welches Technologie zur Verfügung stellt, die der Browser nicht nativ unterstützt.
+Wie der Name -- Webkomponente -- suggeriert, ermöglicht diese Technologie die Webentwicklung in kleinere, wiederverwendbare, modulare Container zu "`komponentisieren"'.  Der klare Vorteil besteht darin, dass diese Komponenten unabhängig von einem Framework, vollständig mit "`vanilla"' HTML, CSS und Javascript kreiert werden können und, wie in Kap.~\ref{cha:component_usage} erwähnt, Code wartbar machen.
+
+\subsection{Custom Elements}
+\subsection{HTML Imports}
+\subsection{HTML Templates}
+\subsection{Shadow DOM}
+
+\section{Komponentenorientierte JavaScript-Frameworks und -Bibliotheken}
+Sogenannte Javascript Frameworks oder Bibliotheken -- der größte Unterschied liegt darin, dass eine Applikation die Bibliothek einbindet und ein Framework die Anwendung an sich -- sind Werkzeuge um dem/der EntwicklerIn ein Grundgerüst an Funktionalität zur Verfügung zu stellen. Ein wichtiger Aspekt ist dabei auch die Effizienz und Verwertbarkeit von erfahrenen EntwicklerInnen entworfenen Code \cite{js-frameworks}.
+Eine konkrete Beschreibung findet sich in \cite{wiki-framework}: 
+\begin{quote}\textit{Ein Framework gibt somit in der Regel die Anwendungsarchitektur vor. Dabei findet eine Umkehrung der Steuerung (Inversion of Control) statt: Der Programmierer registriert konkrete Implementierungen, die dann durch das Framework gesteuert und benutzt werden, statt – wie bei einer Klassenbibliothek – lediglich Klassen und Funktionen zu benutzen. Wird das Registrieren der konkreten Klassen nicht fest im Programmcode verankert, sondern „von außen“ konfiguriert, so spricht man auch von Dependency Injection.}
+\end{quote}
+
+Im Anschluss befindet sich eine Auflistung von solchen, zu diesem Zeitpunkt populären Javascript Frameworks und Bibliotheken\footnote{http://www.npmtrends.com/angular-vs-react-vs-vue-vs-@angular/core}. Diese arbeiten alle zum Großteil mit Komponenten im Frontend.
+\begin{itemize}  
+	\item Angular
+	\item Polymer
+	\item REACT
+	\item Vue.js
+\end{itemize}
+Alle aufgelisteten Frameworks und Bibliotheken sind verfügbar unter der MIT-Lizenz und werden im Kap.~\ref{cha:StateOfTheArt} genauer behandelt.

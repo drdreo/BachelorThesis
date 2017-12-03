@@ -5,17 +5,56 @@ Webkomponenten bestehen aus 4 Bestandteilen:
 \begin{itemize}
 	\item Custom Elements - APIs um neue HTML Elemente zu definieren
 	\item HTML Imports - deklarative Methode um HTML Dokumente in andere zu importieren
-	\item HTML Templates - <template> Element, welches Dokumenten eigenen DOM ermöglicht
+	\item HTML Templates - <template>-Element, welches Dokumenten eigenen DOM ermöglicht
 	\item Shadow DOM - DOM und Styling abkapseln
 \end{itemize}
 An einer Standardisierung der Webkomponenten wird bereits Seiten der W3C gearbeitet. Mehr dazu findet sich in \cite{w3c-components}. Jedoch um diese derzeitig in allen größeren Browsern zu nutzen gibt es sogenannte Polyfills \cite{polyfill}. Dieses Polyfill ist ein Codestück, welches Technologie zur Verfügung stellt, die der Browser nicht nativ unterstützt.
 Wie der Name -- Webkomponente -- suggeriert, ermöglicht diese Technologie die Webentwicklung in kleinere, wiederverwendbare, modulare Container zu "`komponentisieren"'.  Der klare Vorteil besteht darin, dass diese Komponenten unabhängig von einem Framework, vollständig mit "`vanilla"' HTML, CSS und Javascript kreiert werden können und, wie in Kap.~\ref{cha:component_usage} erwähnt, Code wartbar machen.
 
 \subsection{Custom Elements}
-\subsection{HTML Imports}
-\subsection{HTML Templates}
-\subsection{Shadow DOM}
+Custom Elements gibt den EntwicklerInnen die Fähigkeit, eigene, voll funktionsfähige DOM-Elemente zu erstellen, existierende HTML-Tags zu erweitern und/oder von anderen EntwicklerInnen erstellte Elemente zu nutzen.  
 
+Diese Spezifikation ist Teil eines größeren Projekts, das Internet zu rationalisieren, im Hinblick auf EntwicklerInnen zugänglichen Schnittstellen, wie beispielsweise die Custom Elements Definition. Jedoch gibt es immer noch Limitierungen, welche das komplette Potenzial -- semantisch und funktional -- einschränken, um das Verhalten bestehender HTML-Elemente vollständig, mit selbst erstellten Elementen, zu beschreiben \cite{custom-elements}.
+
+Exemplarische Definition:
+\begin{JsCode}
+	class HelloWorld extends HTMLElement {...};
+	customElements.define("hello-world", HelloWorld);
+\end{JsCode}
+
+\subsection{HTML Imports}
+HTML Imports sind einer der vier Webkomponenten Spezifikation. Sie ermöglicht das Inkludieren und Wiederverwenden von HTML Dokumenten in anderen. Dieser Import kann all jenes enthalten, was in diesem HTML Dokument definiert ist (JavaScript, CSS, HTML, ...). 
+Diese Möglichkeit, mehrere Technologien in einem Import, quasi eine URL, zu bündeln, ist eine kleine, aber wesentliche. Aktuell wird es von kaum einem Browser, außer Chrome 62,  unterstützt.\footnote{https://caniuse.com/\#search=HTML\%20Import} Genaueres ist in \cite{html-imports} nachzulesen.
+
+Exemplarischer Import:
+\begin{JsCode}
+	<link rel="import" href="hello-world.html">
+\end{JsCode}
+
+\subsection{HTML Templates}
+Das Template Element kapselt Bestandteile einer Webseite ab, welche durch Skripte geklont und zur Laufzeit in das Dokument eingefügt werden können. Die Darstellung des Elements ist beim laden und erstmaligen rendern der Seite leer, und wird zur Laufzeit mit JavaScript gerendert. Dieses Element kann als Inhaltsplatzhalter angesehen werden, welcher für spätere Verwendung gespeichert wird. 
+
+Exemplar:
+\begin{JsCode}
+  <template id="template">
+  		<p>Hello World!</p>
+  </template>
+\end{JsCode}
+Das p-Element in diesem Template ist kein Kind dessen im DOM. Es ist ein Kind des DocumentFrgament welches vom Template content IDL Attribut zurückgegeben wird, wie in \cite{html-templates} erläutert.
+
+\subsection{Shadow DOM}
+Der Shadow Dom bringt das Abkapseln von DOM Elementen und CSS mit sich. Beispielsweise kann unorganisierte CSS-Code von einem Bereich in den anderen durchsickern, was wiederum einen Konflikt erzeugt, welcher unbeabsichtigtes Verhalten hervorbringen kann. 
+
+Shadow DOM löst dieses Problem durch Isolierung der CSS-Bereiche und Abkapselung des DOM. 
+Gemeinsam mit der Custom Element API ermöglicht dies das Schreiben von Komponenten mit in sich geschlossenem HTML, CSS und JavaScript.
+
+%Shadow DOM is just normal DOM with two differences: 1) how it's created/used and 2) how it behaves in relation to the rest of the page. Normally, you create DOM nodes and append them as children of another element. With shadow DOM, you create a scoped DOM tree that's attached to the element, but separate from its actual children. This scoped subtree is called a shadow tree. The element it's attached to is its shadow host. Anything you add in the shadows becomes local to the hosting element, including <style>. This is how shadow DOM achieves CSS style scoping.
+
+Um den Shadow DOM eines Elements zu erstellen muss diesem lediglich der Shadow Root angehängt werden.
+\begin{JsCode}
+	const p = document.createElement('p');
+	const shadowRoot = p.attachShadow({mode: 'open'});
+\end{JsCode}
 \section{Komponentenorientierte JavaScript-Frameworks und -Bibliotheken}
 Sogenannte Javascript Frameworks oder Bibliotheken -- der größte Unterschied liegt darin, dass eine Applikation die Bibliothek einbindet und ein Framework die Anwendung an sich -- sind Werkzeuge um dem/der EntwicklerIn ein Grundgerüst an Funktionalität zur Verfügung zu stellen. Ein wichtiger Aspekt ist dabei auch die Effizienz und Verwertbarkeit von erfahrenen EntwicklerInnen entworfenen Code \cite{js-frameworks}.
 Eine konkrete Beschreibung findet sich in \cite{wiki-framework}: 
@@ -29,7 +68,7 @@ Im Anschluss befindet sich eine Auflistung von solchen, zu diesem Zeitpunkt popu
 	\item REACT
 	\item Vue.js
 \end{itemize}
-Alle aufgelisteten Frameworks und Bibliotheken sind verfügbar unter der MIT-Lizenz und werden im Kap.~\ref{cha:StateOfTheArt} genauer behandelt.
+Alle aufgelisteten Frameworks und Bibliotheken sind verfügbar unter der MIT-Lizenz und werden im Anschluss genauer behandelt.
 
 \subsection{Angular}
 Angular ist ein TypeScript basierendes Framework. Entwickelt und gewartet von Google, beschrieben als "`Superheroic JavaScript MVW Framework"'. Angular (auch "`Angular 2+"', "`Angular 2"' oder "`ng2"') ist der von Grund auf neu geschriebene, größtenteils inkompatibler Nachfolger von AngularJS (auch "`Angular.js"' oder "`AngularJS 1.x"').
@@ -139,7 +178,7 @@ Die Definition der React Dokumentation \cite{react-component}:
 	export default HelloWorld;
 \end{JsCode}
 
-Angewandt wird diese Komponente wie folgt:
+Angewendet wird diese Komponente wie folgt:
 \begin{JsCode}[numbers=none]
 	import Hello from './HelloWorld';
 	<Hello/>
@@ -174,7 +213,7 @@ Die Definition der Vue Dokumentation \cite{vue-component}:
 	})
 \end{JsCode}
 
-Angewandt wird diese Komponente wie folgt:
+Angewendet wird diese Komponente wie folgt:
 \begin{JsCode}[numbers=none]
 	<div id="container">
 	<hello-world></hello-world>

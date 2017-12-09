@@ -1,9 +1,9 @@
 \chapter{Technische Grundlagen}
 
 \section{Webkomponenten}
-Wie der Name -- Webkomponente -- suggeriert, ermöglicht diese Technologie die Webentwicklung in kleinere, wiederverwendbare, modulare Container zu "`komponentisieren"'.  Der klare Vorteil besteht darin, dass diese Komponenten unabhängig von einem Framework, vollständig mit "`vanilla"' HTML, CSS und Javascript kreiert werden können und, wie in Kap.~\ref{cha:component_usage} erwähnt, Code wartbar machen.
+Wie der Name -- Webkomponente -- suggeriert, ermöglicht diese Technologie die Webentwicklung in kleinere, wiederverwendbare, modulare Container zu "`komponentisieren"'.  Der klare Vorteil besteht darin, dass diese Komponenten, unabhängig von einem Framework, vollständig mit "`vanilla"' HTML, CSS und Javascript kreiert werden können, und wie in Kap.~\ref{cha:component_usage} erwähnt, Code wartbar machen.
 
-Webkomponenten bestehen aus 4 Bestandteilen:
+Webkomponenten bestehen aus 4 separaten W3C Standards\footnote{https://www.w3.org/standards/techs/components\#w3c\_all}:
 \begin{itemize}
 	\item Custom Elements - APIs um neue HTML Elemente zu definieren
 	\item HTML Imports - deklarative Methode um HTML Dokumente in andere zu importieren
@@ -15,7 +15,7 @@ An einer Standardisierung der Webkomponenten wird bereits Seiten der W3C gearbei
 \subsection{Custom Elements}
 Custom Elements gibt den EntwicklerInnen die Fähigkeit, eigene, voll funktionsfähige DOM-Elemente zu erstellen, existierende HTML-Tags zu erweitern und/oder von anderen EntwicklerInnen erstellte Elemente zu nutzen.  
 
-Diese Spezifikation ist Teil eines größeren Projekts, das Internet zu rationalisieren, im Hinblick auf EntwicklerInnen zugänglichen Schnittstellen, wie beispielsweise die Custom Elements Definition. Jedoch gibt es immer noch Limitierungen, welche das komplette Potenzial -- semantisch und funktional -- einschränken, um das Verhalten bestehender HTML-Elemente vollständig, mit selbst erstellten Elementen, zu beschreiben \cite{custom-elements}.
+Diese Spezifikation ist Teil eines größeren Projekts, das Internet zu rationalisieren, im Hinblick auf EntwicklerInnen zugänglichen Schnittstellen, wie beispielsweise die Custom Elements Definition. Jedoch gibt es immer noch Limitierungen, welche das komplette Potenzial -- semantisch und funktional -- einschränken, um das Verhalten bestehender HTML-Elemente vollständig, mit selbst erstellten Elementen, zu beschreiben. Mehr dazu findet sich in \cite{custom-elements}.
 
 Exemplarische Definition:
 \begin{JsCode}
@@ -25,7 +25,7 @@ Exemplarische Definition:
 
 \subsection{HTML Imports}
 HTML Imports ermöglichen das Inkludieren und Wiederverwenden von HTML Dokumenten in anderen. Dieser Import kann all jenes enthalten, was in diesem HTML Dokument definiert ist (JavaScript, CSS, HTML, ...). 
-Diese Möglichkeit, mehrere Technologien in einem Import, quasi eine URL, zu bündeln, ist eine kleine, aber wesentliche. Aktuell wird es von kaum einem Browser, außer Chrome 62,  unterstützt.\footnote{https://caniuse.com/\#search=HTML\%20Import} Genaueres ist in \cite{html-imports} nachzulesen.
+Diese Möglichkeit, mehrere Technologien in einem Import, quasi eine URL, zu bündeln, ist eine kleine, aber wesentliche. Aktuell wird es von kaum einem Browser, außer Chrome 62,  unterstützt\footnote{https://caniuse.com/\#search=HTML\%20Import}. Mehr über \emph{HTML Imports} in \cite{html-imports}.
 
 Exemplarischer Import:
 \begin{JsCode}
@@ -37,14 +37,15 @@ Das Template Element kapselt Bestandteile einer Webseite ab, welche durch Skript
 
 Exemplar:
 \begin{JsCode}
-  <template id="template">
-  		<p>Hello World!</p>
-  </template>
+<template id="template">
+	<p>Hello World!</p>
+</template>
 \end{JsCode}
-Das p-Element in diesem Template ist kein Kind dessen im DOM. Es ist ein Kind des DocumentFragment welches vom content IDL Attribut zurückgegeben wird, wie in \cite{html-templates} erläutert.
+Das p-Element, wie in diesem Beispiel gezeigt, ist kein Kindelement des Template Elements im DOM. Es ist ein Kind des DocumentFragment, welches vom content IDL Attribut des Templates zurückgegeben wird, wie in \cite{html-templates} erläutert.
 
 \subsection{Shadow DOM}
-Der Shadow Dom bringt das Abkapseln von DOM Elementen und CSS mit sich. Beispielsweise kann unorganisierte CSS-Code von einem Bereich in den anderen durchsickern, was wiederum einen Konflikt erzeugen könnte, welcher unbeabsichtigtes Verhalten hervorbringt. 
+Der Shadow Dom bietet eine API zur Erstellung eines separaten Baumes, Shadow Tree genannt, welcher an ein Element angehängt werden kann.
+Das bringt die Abkapselung von DOM Elementen und CSS mit sich. Beispielsweise kann unorganisierter CSS-Code von einem Bereich in den anderen durchsickern, was wiederum einen Konflikt erzeugen könnte, welcher unbeabsichtigtes Verhalten hervorbringt. 
 
 Shadow DOM löst dieses Problem durch Isolierung der CSS-Bereiche und Abkapselung des DOM. 
 Gemeinsam mit der Custom Element API ermöglicht dies das Schreiben von Komponenten mit in sich geschlossenem HTML, CSS und JavaScript.
@@ -76,8 +77,8 @@ Angular ist ein TypeScript basierendes Framework. Entwickelt und gewartet von Go
 AngularJS wurde im Oktober 2010 veröffentlicht und bekommt weiterhin bug-fixes, \etc. Das neue Angular wurde im September 2016 als Version 2 veröffentlicht. Die aktuellste Version ist 4.3.6 (Stand 23. August 2017). Die Versionsnummer 3 wurde übersprungen, da eines der NPM-Pakete von Angular 2 bereits die Version v3.3.0 trug\footnote{http://angularjs.blogspot.co.at/2016/12/ok-let-me-explain-its-going-to-be.html}.
 
 \subsubsection{Angular Komponente}
-Das Kernkonzept von Angular ist die Komponenten. Eine komplette Angular Anwendung kann als Baum aus solchen Komponenten modelliert werden.
-Die Definition aus der Angular Dokumentation \cite{angular-component}: 
+Das Kernkonzept von Angular ist die Komponente. Eine komplette Angular-Anwendung kann als Baum, bestehend aus solchen Komponenten, modelliert werden.
+Die Definition laut der offiziellen Angular-Dokumentation \cite{angular-component}: 
 \begin{quote}
 	\begin{english}
 		\textit{A component controls a patch of screen called a view. You define a component's application logic—what it does to support the view—inside a class. The class interacts with the view through an API of properties and methods.}
@@ -155,7 +156,7 @@ React (auch "`React.js"' oder "`ReactJS"') wird als "`JavaScript Bibliothek zur 
 
 \subsubsection{React Komponente}
 Aus der Sicht von React sind Komponenten ident mit Javascript Funktionen. Sie können beliebig viele Inputs ("`props"' genannt) besitzen und geben React Elemente zurück, die beschreiben, was am Bildschirm ausgegeben werden soll.
-Die Definition der React Dokumentation \cite{react-component}: 
+Die Definition entsprechend der offiziellen React Dokumentation \cite{react-component}: 
 \begin{quote}
 	\begin{english}
 		\textit{Components let you split the UI into independent, reusable pieces, and think about each piece in isolation.}
@@ -192,7 +193,7 @@ Was folgende Ausgabe erzeugt:
 Vue (englische Aussprache [/vju/]), auch "`Vue.js"' genannt, beschreibt sich selbst als ein "`progressives Framework zur Entwicklung von User-Interfaces"'\footnote{https://vuejs.org/v2/guide/}. Vue wurde im Februar 2014 vom Ex-Google-Mitarbeiter Evan You veröffentlicht. Ein markantes Merkmal von Vue ist, dass es hauptsächlich von einer einzelnen Person, ohne die Stütze einer großen Firma, erschaffen wurde. Nur ein paar EntwicklerInnen arbeiten für Evan an der Weiterentwicklung des Frameworks. Die aktuellste Version ist 2.5.2 (Stand 13. Oktober 2017).
 
 \subsubsection{Vue Komponente}
-Die Definition der Vue Dokumentation \cite{vue-component}: 
+Die Definition laut der Vue Dokumentation \cite{vue-component}: 
 \begin{quote}
 	\begin{english}
 		\textit{Components are one of the most powerful features of Vue. They help you extend basic HTML elements to encapsulate reusable code. At a high level, components are custom elements that Vue’s compiler attaches behavior to. In some cases, they may also appear as a native HTML element extended with the special is attribute.}

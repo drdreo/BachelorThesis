@@ -10,12 +10,12 @@ Webkomponenten bestehen aus 4 separaten W3C Standards\footnote{https://www.w3.or
 	\item HTML Templates - <template>-Element, welches Dokumenten eigenen DOM ermöglicht
 	\item Shadow DOM - DOM und Styling abkapseln
 \end{itemize}
-An einer Standardisierung der Webkomponenten wird bereits Seiten der W3C gearbeitet. Mehr dazu findet sich in \cite{w3c-components}. Jedoch um diese derzeitig in allen größeren Browsern zu nutzen gibt es sogenannte Polyfills \cite{polyfill}. Dieses Polyfill ist ein Codestück, welches Technologie zur Verfügung stellt, die der Browser nicht nativ unterstützt.
+An einer Standardisierung der Webkomponenten wird bereits Seiten der W3C gearbeitet. Mehr dazu findet sich in \cite{w3c-components}. Jedoch um diese derzeitig in allen größeren Browsern zu nutzen, gibt es sogenannte Polyfills \cite{polyfill}. Dieses Polyfill ist ein Codestück, welches Technologie zur Verfügung stellt, die der Browser nicht nativ unterstützt.
 
-\subsection{Custom Elements}
-Custom Elements gibt den EntwicklerInnen die Fähigkeit, eigene, voll funktionsfähige DOM-Elemente zu erstellen, existierende HTML-Tags zu erweitern und/oder von anderen EntwicklerInnen erstellte Elemente zu nutzen.  
+\subsection{Custom-Elements}
+Custom-Elements gibt den EntwicklerInnen die Fähigkeit, eigene, voll funktionsfähige DOM-Elemente zu erstellen, existierende HTML-Tags zu erweitern und/oder von anderen EntwicklerInnen erstellte Elemente zu nutzen.  
 
-Diese Spezifikation ist Teil eines größeren Projekts, das Internet zu rationalisieren, im Hinblick auf EntwicklerInnen zugänglichen Schnittstellen, wie beispielsweise die Custom Elements Definition. Jedoch gibt es immer noch Limitierungen, welche das komplette Potenzial -- semantisch und funktional -- einschränken, um das Verhalten bestehender HTML-Elemente vollständig, mit selbst erstellten Elementen, zu beschreiben. Mehr dazu findet sich in \cite{custom-elements}.
+Diese Spezifikation ist Teil eines größeren Projekts, das Internet zu rationalisieren, im Hinblick auf EntwicklerInnen zugänglichen Schnittstellen, wie beispielsweise die Custom-Elements-Definition. Jedoch gibt es immer noch Limitierungen, welche das komplette Potenzial -- semantisch und funktional -- einschränken, um das Verhalten bestehender HTML-Elemente vollständig, mit selbst erstellten Elementen, zu beschreiben. Mehr dazu findet sich in \cite{custom-elements}.
 
 Exemplarische Definition:
 \begin{JsCode}
@@ -23,8 +23,8 @@ Exemplarische Definition:
 	customElements.define("hello-world", HelloWorld);
 \end{JsCode}
 
-\subsection{HTML Imports}
-HTML Imports ermöglichen das Inkludieren und Wiederverwenden von HTML Dokumenten in anderen. Dieser Import kann all jenes enthalten, was in diesem HTML Dokument definiert ist (JavaScript, CSS, HTML, ...). 
+\subsection{HTML Import}
+HTML Importe ermöglichen das Inkludieren und Wiederverwenden von HTML Dokumenten in anderen. Dieser Import kann all jenes enthalten, was in diesem HTML-Dokument definiert ist (Javascript, CSS, HTML, ...). 
 Diese Möglichkeit, mehrere Technologien in einem Import, quasi eine URL, zu bündeln, ist eine kleine, aber wesentliche. Aktuell wird es von kaum einem Browser, außer Chrome 62,  unterstützt\footnote{https://caniuse.com/\#search=HTML\%20Import}. Mehr über \emph{HTML Imports} in \cite{html-imports}.
 
 Exemplarischer Import:
@@ -33,7 +33,7 @@ Exemplarischer Import:
 \end{JsCode}
 
 \subsection{HTML Templates}
-Das Template Element kapselt Bestandteile einer Webseite ab, welche durch Skripte geklont und zur Laufzeit in das Dokument eingefügt werden können. Die Darstellung des Elements ist beim laden und erstmaligen rendern der Seite leer, und wird zur Laufzeit mit JavaScript gerendert. Dieses Element kann als Inhaltsplatzhalter angesehen werden, welcher für spätere Verwendung gespeichert wird. 
+Das Template Element kapselt Bestandteile einer Webseite ab, welche durch Skripte geklont und zur Laufzeit in das Dokument eingefügt werden können. Die Darstellung des Elements ist beim Laden und erstmaligen rendern der Seite leer, und wird zur Laufzeit mit Javascript gerendert. Dieses Element kann als Inhaltsplatzhalter angesehen werden, welcher für spätere Verwendung gespeichert wird. 
 
 Exemplar:
 \begin{JsCode}
@@ -45,10 +45,10 @@ Das p-Element, wie in diesem Beispiel gezeigt, ist kein Kindelement des Template
 
 \subsection{Shadow DOM}
 Der Shadow Dom bietet eine API zur Erstellung eines separaten Baumes, Shadow Tree genannt, welcher an ein Element angehängt werden kann.
-Das bringt die Abkapselung von DOM Elementen und CSS mit sich. Beispielsweise kann unorganisierter CSS-Code von einem Bereich in den anderen durchsickern, was wiederum einen Konflikt erzeugen könnte, welcher unbeabsichtigtes Verhalten hervorbringt. 
+Das bringt die Abkapselung von DOM-Elementen und CSS mit sich. Beispielsweise kann unorganisierter CSS-Code von einem Bereich in den anderen durchsickern, was wiederum einen Konflikt erzeugen könnte, welcher unbeabsichtigtes Verhalten hervorbringt. 
 
 Shadow DOM löst dieses Problem durch Isolierung der CSS-Bereiche und Abkapselung des DOM. 
-Gemeinsam mit der Custom Element API ermöglicht dies das Schreiben von Komponenten mit in sich geschlossenem HTML, CSS und JavaScript.
+Gemeinsam mit der Custom-Element-API ermöglicht es das Schreiben von Komponenten mit in sich geschlossenem HTML, CSS und Javascript.
 
 %Shadow DOM is just normal DOM with two differences: 1) how it's created/used and 2) how it behaves in relation to the rest of the page. Normally, you create DOM nodes and append them as children of another element. With shadow DOM, you create a scoped DOM tree that's attached to the element, but separate from its actual children. This scoped subtree is called a shadow tree. The element it's attached to is its shadow host. Anything you add in the shadows becomes local to the hosting element, including <style>. This is how shadow DOM achieves CSS style scoping.
 
@@ -58,7 +58,7 @@ Um den Shadow DOM eines Elements zu erstellen muss diesem lediglich der Shadow R
 	const shadowRoot = p.attachShadow({mode: 'open'});
 \end{JsCode}
 \section{Komponentenorientierte JavaScript-Frameworks und -Bibliotheken}
-Sogenannte Javascript Frameworks oder Bibliotheken -- der größte Unterschied liegt darin, dass eine Applikation die Bibliothek einbindet und ein Framework die Anwendung an sich -- sind Werkzeuge um den EntwicklerInnen ein Grundgerüst an Funktionalität zur Verfügung zu stellen. Ein wichtiger Aspekt ist dabei auch die Effizienz und Verwertbarkeit von erfahrenen ProgrammiererInnen entworfenen Code \cite{js-frameworks}.
+Sogenannte Javascript Frameworks oder Bibliotheken -- der größte Unterschied liegt darin, dass eine Applikation die Bibliothek einbindet und ein Framework die Anwendung an sich -- sind Werkzeuge, um den EntwicklerInnen ein Grundgerüst an Funktionalität zur Verfügung zu stellen. Ein wichtiger Aspekt ist dabei auch die Effizienz und Verwertbarkeit von erfahrenen ProgrammiererInnen entworfenen Code \cite{js-frameworks}.
 Eine konkrete Beschreibung findet sich in \cite{wiki-framework}: 
 \begin{quote}\textit{Ein Framework gibt somit in der Regel die Anwendungsarchitektur vor. Dabei findet eine Umkehrung der Steuerung (Inversion of Control) statt: Der Programmierer registriert konkrete Implementierungen, die dann durch das Framework gesteuert und benutzt werden, statt -- wie bei einer Klassenbibliothek -- lediglich Klassen und Funktionen zu benutzen. Wird das Registrieren der konkreten Klassen nicht fest im Programmcode verankert, sondern „von außen“ konfiguriert, so spricht man auch von Dependency Injection.}
 \end{quote}
@@ -243,9 +243,9 @@ Jegliche REST-Zugriffe sind zustandslos. Heißt, jede Anfrage enthält alle ben�
 Eine standardisierte Schnittstelle soll durch die Trennung der Zuständigkeiten die Einfachheit fördern, sowie die darunter liegende Implementierung und Kommunikation verbergen. 
 \subsubsection{Caching}
 Die effizienteste Netzwerkanfrage ist jene, die das Netzwerk nicht benutzt.
-Soll heißen, dass eine wiederverwendbare, gecachte  Antwort die Performanteste ist. 
+Soll heißen, dass eine wiederverwendbare, gecachte Antwort die Performanteste ist. 
 \subsubsection{Stufen Systeme}
 Das Zielsystem soll, wie in Kap.~\ref{cha:webapplication_structure} weiter behandelt, mit n-Stufen aufgebaut sein, damit der Anwender lediglich auf eine Schnittstelle, einer Stufe, zugreifen muss, und die anderen verborgen bleiben können.
 
 \subsection{Praxis}
-In der Praxis wird das REST-Paradigma bevorzugt per HTTP/S realisiert. Services werden über eine URL/ einen URI angesprochen. Wie eine Anfrage bearbeitet werden soll, kann per HTTP-Methode (GET, POST, PUT, \etc) verfeinert werden. 
+In der Praxis wird das REST-Paradigma bevorzugt per HTTP/S realisiert. Services werden über eine URL/einen URI angesprochen. Wie eine Anfrage bearbeitet werden soll, kann per HTTP-Methode (GET, POST, PUT, \etc) verfeinert werden. 

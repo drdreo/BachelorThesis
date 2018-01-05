@@ -1,9 +1,21 @@
 \chapter{Implementierung der Webanwendung}
 
 \section{Struktur der Webanwendung}
+\subsection{Benutzeroberfläche}
+Die Oberfläche der Anwendung beschränkt sich nur auf das Nötigste. Für die Eingabe von Daten werden lediglich Webkomponenten Inputs verwendet, welche durch die Nutzung von paper-inputs\footnote{https://www.webcomponents.org/element/PolymerElements/paper-input}, die der Materialdesignkonvention\footnote{Eine Anleitung, wie man Benutzeroberflächen und deren Komponenten gestalten sollte} folgen, passend gestaltet sind.
 
+\subsection{Server}
+Um einen Node.js Server mit dem Express Framework aufzusetzen und zu konfigurieren, wird, wie in Kap.~\ref{cha:scram-engine} erläutert, auf der Arbeit von Jordan Last aufgebaut und diese passend erweitert. 
+Die Client-Server-Kommunikation erfolgt mittels Ajax-Aufrufen durch die iron-ajax Komponente\footnote{https://www.webcomponents.org/element/PolymerElements/iron-ajax}.
+\subsection{Datenbank}
+Da es für Datenbankzugriffe, zum Zeitpunkt dieser Arbeit, keine vorhanden Webkomponenten gibt, sind eigenes welche für alle CRUD-Operationen entwickelt und umgesetzt worden.
+
+\subsection{Datenflow}
+Der Anwender soll zu beginn Datensätze anlegen können. Im konkreten Beispiel wurde das Datenmodell eines Users mit Username, E-Mail und Passwort herangezogen.
+Nachdem der Anwender die Daten für einen User ausgefüllt hat, kann dieser angelegt werden. Nach rudimentären Validierungen werden die Daten an den Server übermittelt. Dieser speichert den User in der Datenbank ab. 
+In der Listenansicht sieht der Anwender alle bereits angelegten User in einer Tabelle und per klick auf dessen Namen wird zur Detailansicht weitergeleitet. Hier wird ein Formular mit den Userdaten ausgefüllt, welche verändert und aktualisiert werden können.   
+Auf der Detailseite findet sich ebenso ein Lösch-Knopf, um einen bestehenden User zu entfernen.
 \section{Umsetzung mit Dependencies Electron / Scram-Engine}
-
 \subsection{Electron}
 Electron ist ein Framework, um native Cross-Plattform-Applikationen mit Web-Technologien wie JavaScript, HTML und CSS zu erstellen. Es basiert auf dem Chromium\footnote{https://www.chromium.org/} Webbrowser und Node.js.
 \subsection{Scram-Engine}
@@ -15,11 +27,4 @@ Durch die Kombination der beiden Technologien können Webkomponenten weitaus meh
 
 Da universelle Webkomponenten auf Electron als deren Plattform angewiesen sind, muss das System, welches diese betreibt, relativ leistungsstark sein. Jordan Last entwickelt an einer Lösung, um die Electron-Abhängigkeit -- und dadurch die Chromium-Abhängigkeit -- loszuwerden. Jegliche Interessenten, an dieser Optimierung mitzuwirken, können ihn kontaktieren\footnote{https://github.com/lastmjs}.
 
-%Because universal web components rely on Electron as their non-browser platform, the system that they run on must be relatively powerful. Eventually we need web components to work on systems with very little resources. I'm currently exploring ways of doing this. For example, jsdom would allow us to drop the Electron dependency (and therefore the Chromium dependency) by allowing us to render our web components directly in Node.js. Then we would only need our system to support Node.js. IoT.js, JerryScript, and dukluv could all help in that respect. Please contact me if you would like to help web components work on less powerful systems.
-
-%The scram-engine project right now is just a way to easily feed a starting html file into a pre-configured Electron boot-up script with minimal effort on the part of the developer. You just invoke Electron from the command line and give it a starting html file. The pre-configuring gives provides some nice conveniences for working with Electron, such as providing command-line arguments for hiding the Electron window, thus allowing it to run easily from the command-line alone (for server-side applications).It also allows command-line arguments to be passed to your web component application, and adds a local http server...just some nice stuff that makes it easy to deal with Electron. Electron is necessary because it combines the Chromium runtime with the Node.js runtime. We use Chromium's ability to parse web components into an interactive DOM that can be manipulated (this is just normal web programming with the DOM). The interesting thing about Electron is that those web components can then call straight into any Node.js code, thus giving your web components the ability to talk to the OS, do database calls, and do anything Node.js can do. A Node.js server would not be enough because as of right now Node.js has no way of parsing HTML, custom elements, or web components in general.
-
-%Simple explanation:
-
-%Scram-engine provides a convenient way to run a web app from Electron. Electron combines Chromium and Node.js. Chromium is what makes web components work. Node.js gives you access to the operating system (server, database, etc). Combining them allows you to write web apps with web components that do much more than they ever could do within a browser alone.
 \section{Implementierung der Komponenten}

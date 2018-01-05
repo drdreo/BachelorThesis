@@ -3,7 +3,7 @@
 \section{Webkomponenten}
 Wie der Name -- Webkomponente -- suggeriert, ermöglicht diese Technologie die Webentwicklung in kleinere, wiederverwendbare, modulare Container zu "`komponentisieren"'.  Der klare Vorteil besteht darin, dass diese Komponenten, unabhängig von einem Framework, vollständig mit "`vanilla"' HTML, CSS und Javascript kreiert werden können, und wie in Kap.~\ref{cha:component_usage} erwähnt, Code wartbar machen.
 
-Webkomponenten bestehen aus 4 separaten W3C Standards\footnote{https://www.w3.org/standards/techs/components\#w3c\_all}:
+Webkomponenten bestehen aus 4 separaten W3C Standards\footnote{\url{https://www.w3.org/standards/techs/components\#w3c\_all}}:
 \begin{itemize}
 	\item Custom Elements - APIs um neue HTML Elemente zu definieren
 	\item HTML Imports - deklarative Methode um HTML Dokumente in andere zu importieren
@@ -25,7 +25,7 @@ Exemplarische Definition:
 
 \subsection{HTML Import}
 HTML Importe ermöglichen das Inkludieren und Wiederverwenden von HTML Dokumenten in anderen. Dieser Import kann all jenes enthalten, was in diesem HTML-Dokument definiert ist (Javascript, CSS, HTML, ...). 
-Diese Möglichkeit, mehrere Technologien in einem Import, quasi eine URL, zu bündeln, ist eine kleine, aber wesentliche. Aktuell wird es von kaum einem Browser, außer Chrome 62,  unterstützt\footnote{https://caniuse.com/\#search=HTML\%20Import}. Mehr über \emph{HTML Imports} in \cite{html-imports}.
+Diese Möglichkeit, mehrere Technologien in einem Import, quasi eine URL, zu bündeln, ist eine kleine, aber wesentliche. Aktuell wird es von kaum einem Browser, außer Chrome 62,  unterstützt\footnote{\url{https://caniuse.com/\#search=HTML\%20Import}}. Mehr über \emph{HTML Imports} in \cite{html-imports}.
 
 Exemplarischer Import:
 \begin{JsCode}
@@ -57,13 +57,14 @@ Um den Shadow DOM eines Elements zu erstellen muss diesem lediglich der Shadow R
 	const p = document.createElement('p');
 	const shadowRoot = p.attachShadow({mode: 'open'});
 \end{JsCode}
-\section{Komponentenorientierte JavaScript-Frameworks und -Bibliotheken}
+\section{Komponentenorientierte Javascript-Frameworks und -Bibliotheken}
+\label{cha:javascript-frameworks}
 Sogenannte Javascript Frameworks oder Bibliotheken -- der größte Unterschied liegt darin, dass eine Applikation die Bibliothek einbindet und ein Framework die Anwendung an sich -- sind Werkzeuge, um den EntwicklerInnen ein Grundgerüst an Funktionalität zur Verfügung zu stellen. Ein wichtiger Aspekt ist dabei auch die Effizienz und Verwertbarkeit von erfahrenen ProgrammiererInnen entworfenen Code \cite{js-frameworks}.
 Eine konkrete Beschreibung findet sich in \cite{wiki-framework}: 
 \begin{quote}\textit{Ein Framework gibt somit in der Regel die Anwendungsarchitektur vor. Dabei findet eine Umkehrung der Steuerung (Inversion of Control) statt: Der Programmierer registriert konkrete Implementierungen, die dann durch das Framework gesteuert und benutzt werden, statt -- wie bei einer Klassenbibliothek -- lediglich Klassen und Funktionen zu benutzen. Wird das Registrieren der konkreten Klassen nicht fest im Programmcode verankert, sondern „von außen“ konfiguriert, so spricht man auch von Dependency Injection.}
 \end{quote}
 
-Im Anschluss befindet sich eine Auflistung von solchen, zu diesem Zeitpunkt populären Javascript Frameworks und Bibliotheken\footnote{http://www.npmtrends.com/angular-vs-react-vs-vue-vs-@angular/core}. Diese arbeiten alle zum Großteil mit Komponenten im Frontend.
+Im Anschluss befindet sich eine Auflistung von solchen, zu diesem Zeitpunkt populären Javascript Frameworks und Bibliotheken\footnote{\url{http://www.npmtrends.com/angular-vs-react-vs-vue-vs-@angular/core}}. Diese arbeiten alle zum Großteil mit Komponenten im Frontend.
 \begin{itemize}  
 	\item Angular
 	\item Polymer
@@ -73,8 +74,9 @@ Im Anschluss befindet sich eine Auflistung von solchen, zu diesem Zeitpunkt popu
 Alle aufgelisteten Frameworks und Bibliotheken sind verfügbar unter der MIT-Lizenz und werden im Anschluss genauer behandelt.
 
 \subsection{Angular}
+\label{sec:angular}
 Angular ist ein TypeScript basierendes Framework. Entwickelt und gewartet von Google, beschrieben als "`Superheroic JavaScript MVW Framework"'. Angular (auch "`Angular 2+"', "`Angular 2"' oder "`ng2"') ist der von Grund auf neu geschriebene, größtenteils inkompatibler Nachfolger von AngularJS (auch "`Angular.js"' oder "`AngularJS 1.x"').
-AngularJS wurde im Oktober 2010 veröffentlicht und bekommt weiterhin bug-fixes, \etc. Das neue Angular wurde im September 2016 als Version 2 veröffentlicht. Die aktuellste Version ist 4.3.6 (Stand 23. August 2017). Die Versionsnummer 3 wurde übersprungen, da eines der NPM-Pakete von Angular 2 bereits die Version v3.3.0 trug\footnote{http://angularjs.blogspot.co.at/2016/12/ok-let-me-explain-its-going-to-be.html}.
+AngularJS wurde im Oktober 2010 veröffentlicht und bekommt weiterhin bug-fixes, \etc. Das neue Angular wurde im September 2016 als Version 2 veröffentlicht. Die aktuellste Version ist 4.3.6 (Stand 23. August 2017). Die Versionsnummer 3 wurde übersprungen, da eines der NPM-Pakete von Angular 2 bereits die Version v3.3.0 trug\footnote{\url{http://angularjs.blogspot.co.at/2016/12/ok-let-me-explain-its-going-to-be.html}}.
 
 \subsubsection{Angular Komponente}
 Das Kernkonzept von Angular ist die Komponente. Eine komplette Angular-Anwendung kann als Baum, bestehend aus solchen Komponenten, modelliert werden.
@@ -152,7 +154,7 @@ Was folgende Ausgabe rendert:
 \end{JsCode}
 
 \subsection{React}
-React (auch "`React.js"' oder "`ReactJS"') wird als "`JavaScript Bibliothek zur Entwicklung von User-Interfaces"'\footnote{https://reactjs.org/blog/2013/06/05/why-react.html} bezeichnet. Es wurde erstmals im März 2013 von Facebook veröffentlicht -- zuvor nur firmenintern verwendet -- und wird seither entwickelt und gewartet. Die neuste Version (Stand 26. September 2017) ist 16.0.0.
+React (auch "`React.js"' oder "`ReactJS"') wird als "`JavaScript Bibliothek zur Entwicklung von User-Interfaces"'\footnote{\url{https://reactjs.org/blog/2013/06/05/why-react.html}} bezeichnet. Es wurde erstmals im März 2013 von Facebook veröffentlicht -- zuvor nur firmenintern verwendet -- und wird seither entwickelt und gewartet. Die neuste Version (Stand 26. September 2017) ist 16.0.0.
 
 \subsubsection{React Komponente}
 Aus der Sicht von React sind Komponenten ident mit Javascript Funktionen. Sie können beliebig viele Inputs ("`props"' genannt) besitzen und geben React Elemente zurück, die beschreiben, was am Bildschirm ausgegeben werden soll.
@@ -190,7 +192,7 @@ Was folgende Ausgabe erzeugt:
 \end{JsCode}
 
 \subsection{Vue }
-Vue (englische Aussprache [/vju/]), auch "`Vue.js"' genannt, beschreibt sich selbst als ein "`progressives Framework zur Entwicklung von User-Interfaces"'\footnote{https://vuejs.org/v2/guide/}. Vue wurde im Februar 2014 vom Ex-Google-Mitarbeiter Evan You veröffentlicht. Ein markantes Merkmal von Vue ist, dass es hauptsächlich von einer einzelnen Person, ohne die Stütze einer großen Firma, erschaffen wurde. Nur ein paar EntwicklerInnen arbeiten für Evan an der Weiterentwicklung des Frameworks. Die aktuellste Version ist 2.5.2 (Stand 13. Oktober 2017).
+Vue (englische Aussprache [/vju/]), auch "`Vue.js"' genannt, beschreibt sich selbst als ein "`progressives Framework zur Entwicklung von User-Interfaces"'\footnote{\url{https://vuejs.org/v2/guide/}}. Vue wurde im Februar 2014 vom Ex-Google-Mitarbeiter Evan You veröffentlicht. Ein markantes Merkmal von Vue ist, dass es hauptsächlich von einer einzelnen Person, ohne die Stütze einer großen Firma, erschaffen wurde. Nur ein paar EntwicklerInnen arbeiten für Evan an der Weiterentwicklung des Frameworks. Die aktuellste Version ist 2.5.2 (Stand 13. Oktober 2017).
 
 \subsubsection{Vue Komponente}
 Die Definition laut der Vue Dokumentation \cite{vue-component}: 
@@ -249,3 +251,6 @@ Das Zielsystem soll, wie in Kap.~\ref{cha:webapplication_structure} weiter behan
 
 \subsection{Praxis}
 In der Praxis wird das REST-Paradigma bevorzugt per HTTP/S realisiert. Services werden über eine URL/einen URI angesprochen. Wie eine Anfrage bearbeitet werden soll, kann per HTTP-Methode (GET, POST, PUT, \etc) verfeinert werden. 
+
+\section{CRUD}
+CRUD ist ein englisches Akronym für Create, Read, Update und Delete. Es sind die 4 Grundfunktionen um mit einer Datenbank zu interagieren und Datensätze zu manipulieren. Spezielle HTTP Methoden werden in RESTful API Anwendungen verwendet, um unterschiedliche CRUD-Operationen auszuführen.

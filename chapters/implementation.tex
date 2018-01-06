@@ -13,7 +13,7 @@ Da es für Datenbankzugriffe, zum Zeitpunkt dieser Arbeit, keine vorhanden Webko
 \subsection{Datenflow}
 Der Anwender soll zu beginn Datensätze anlegen können. Im konkreten Beispiel wurde das Datenmodell eines Users mit Username, E-Mail und Passwort herangezogen.
 Nachdem der Anwender die Daten für einen User ausgefüllt hat, kann dieser angelegt werden. Nach rudimentären Validierungen werden die Daten an den Server übermittelt. Dieser speichert den User in der Datenbank ab. 
-In der Listenansicht sieht der Anwender alle bereits angelegten User in einer Tabelle und per klick auf dessen Namen wird zur Detailansicht weitergeleitet. Hier wird ein Formular mit den Userdaten ausgefüllt, welche verändert und aktualisiert werden können.   
+In der Listenansicht sieht der Anwender alle bereits angelegten User in einer Tabelle und per Klick auf dessen Namen wird zur Detailansicht weitergeleitet. Hier wird ein Formular mit den Userdaten ausgefüllt, welche verändert und aktualisiert werden können.   
 Auf der Detailseite findet sich ebenso ein Lösch-Knopf, um einen bestehenden User zu entfernen.
 \section{Umsetzung mit Dependencies Electron / Scram-Engine}
 \subsection{Electron}
@@ -23,8 +23,8 @@ Electron ist ein Framework, um native Cross-Plattform-Applikationen mit Web-Tech
 Das Scram-Engine-Projekt, erarbeitet von Jordan Last, ermöglicht es, eine HTML-Datei einem vorkonfigurierten Electronstartscript mit minimalem Aufwand, zur Verfügung zu stellen. Es wird lediglich Electron von der Kommandozeile aufgerufen und eine Startdatei mitgegeben. Die Vorkonfiguration vereinfacht das Arbeiten mit Electron durch beispielsweise das Anbieten von Kommandozeilenargumenten, um das Electronfenster zu verstecken, somit das bequeme Starten von serverseitigen Anwendungen aus der Kommandozeile heraus.
 Electron ist notwendig, da es Chromium mit Node.js kombiniert. Die Scram-Engine nutzt Chromiums Fähigkeit, Webkomponenten in einen interaktiven DOM zu parsen, welcher manipuliert werden kann. Diese Webkomponenten können dadurch jeglichen Node.js Code nutzen und haben die Möglichkeit mit dem Betriebssystem zu interagieren, Datenbankaufrufe zu tätigen, prinzipiell alles, was Node.js möglich ist.
 Ein reiner Node.js Server würde nicht ausreichen, da dieser HTML, Custom-Elemente oder Webkomponenten generell nicht parsen kann.
-Durch die Kombination der beiden Technologien können Webkomponenten weitaus mehr tun, als in einem Webbrowser.
+Durch die Kombination der beiden Technologien können Webkomponenten weitaus mehr leisten, als in einem Webbrowser.
 
-Da universelle Webkomponenten auf Electron als deren Plattform angewiesen sind, muss das System, welches diese betreibt, relativ leistungsstark sein. Jordan Last entwickelt an einer Lösung, um die Electron-Abhängigkeit -- und dadurch die Chromium-Abhängigkeit -- loszuwerden. Jegliche Interessenten, an dieser Optimierung mitzuwirken, können ihn kontaktieren\footnote{https://github.com/lastmjs}.
+Da universelle Webkomponenten auf Electron als deren Plattform angewiesen sind, muss das System, welches diese betreibt, relativ leistungsstark sein. Jordan Last arbeitet an einer Lösung, um die Electron-Abhängigkeit -- und dadurch die Chromium-Abhängigkeit -- loszuwerden. Jegliche Interessenten, an dieser Optimierung mitzuwirken, können ihn kontaktieren\footnote{https://github.com/lastmjs}.
 
 \section{Implementierung der Komponenten}

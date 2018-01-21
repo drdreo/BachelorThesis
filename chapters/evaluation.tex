@@ -12,7 +12,17 @@ Hat man erstmal die Technologie durchschaut kann durch das Wiederverwenden der e
 Der Vorteil der Webkomponenten liegt darin, sie nach belieben einsetzen zu können. Damit ist gemeint, man kann in bestehenden Projekten Teile durch Webkomponenten austauschen und nachbessern. Egal, ob es ein "`vanilla"' Projekt, oder ein mit beispielsweise Angular aufgesetztes Projekt, ist. Bei einer Anwendung, welche nicht mit dem gewünschten Framework erstellt wurde, kann man meist keine Elemente dieses Frameworks nutzen. Bei Webkomponenten fällt dieser Nachteil weg.
 
 \section{Wiederverwendbarkeit}
-Die Abkapselung der Webkomponenten vom restlichen Dokument und prinzipiell auch dem Projekt selbst, macht diese sehr wiederverwendbar. Hat man eine Komponente für eine Anwendung programmiert, so ist diese nicht zwingend an diese gebunden und kann auch in künftigen, oder vergangenen Projekten, verwendet werden. Ebenso ist es möglich Komponenten anderen EntwicklerInnen zur Verfügung zu stellen, sodass man eine große Palette an bereits vorhandenen Komponenten hat, um Anwendungen zu realisieren. Durch ihre Flexibilität wird auch die Wiederverwendbarkeit gesteigert, da man Webkomponenten auch in Projekten, welche auf einem Framework aufbauen, wieder verwenden kann. 
+
+%Dieser Vorteil kommt bereits mit Webkomponenten. Einer der größten Bestreben der Webkomponenten ist es, das man diese möglichst einfach mit anderen teilen und wiederverwenden kann. So wird das endlose reimplementieren der selben Funktionen in unterschiedlichen Projekten obsolet. 
+
+Die Abkapselung der Webkomponenten vom restlichen Dokument und prinzipiell auch dem Projekt selbst, macht diese wiederverwendbar. Hat man eine Komponente für eine Anwendung programmiert, so ist diese nicht zwingend an diese gebunden und kann auch in künftigen, oder vergangenen Projekten, verwendet werden. Ebenso ist es möglich Komponenten anderen EntwicklerInnen zur Verfügung zu stellen, sodass man eine große Palette an bereits vorhandenen Komponenten hat, um Anwendungen zu realisieren. Durch ihre Flexibilität wird auch die Wiederverwendbarkeit gesteigert, da man Webkomponenten auch in Projekten, welche auf einem Framework aufbauen, wieder verwenden kann. 
+
+Das Wiederverwenden ist möglich, da Webkomponenten auf derzeitigen oder geplanten Webstandards basieren, wie in Kap.~\ref{cha:webcomponents} erwähnt, welche alle größeren Browser versuchen zu implementieren. Das bedeutet, dass Webkomponenten nicht auf ein Framework oder eine Bibliothek angewiesen sind, und universell im Web funktionieren können.
 
 \section{Testbarkeit}
+
+Da Komponenten abgeschlossene Systeme sind, können sie als Blackbox betrachtet werden. Diese sind von deren Umgebung komplett unabhängig. Diese Unabhängigkeit bringt den Idealfall für Programmtests mit sich, weil es stets einfacher ist, abgeschottete Einheiten zu testen, als den ganzen Komplex.
+
+Scram.js hat eine Option(-d), welche es ermöglicht ein Electron Fenster während des Debuggens zu öffnen. Dadurch hat man alle Chrome Entwicklerwerkzeuge für das Debuggen am Server zur Verfügung.
+
 Um Webkomponenten zu testen gibt es vom Polymer-Team den sogenannten "`Web Component Tester"'\footnote{https://www.polymer-project.org/1.0/docs/tools/tests}. Dieser ist eine End-to-End Testumgebung welcher das lokale Testen von selbst erstellten Elementen ermöglicht.

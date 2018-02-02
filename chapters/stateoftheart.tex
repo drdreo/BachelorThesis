@@ -3,7 +3,7 @@
 %oder symfony, laravel
 \chapter{State of the Art}
 \label{cha:StateOfTheArt}
-Um heutzutage eine vollständige Webanwendung -- Datenspeicher, Logik und Darstellung -- zu erstellen, gibt es unterschiedlichste Herangehensweisen. Um diesen Prozess zu vereinfachen, wird in den meisten Fällen ein Framework, wie in Kap.~\ref{cha:javascript-frameworks} erläutert, verwendet. Javascript Frameworks werden bevorzugt für das Frontend herangezogen. Das Backend kann, unabhängig vom Frontend, in jeder beliebigen Programmiersprache umgesetzt werden (Javascript, PHP, Python, ...), aber auch hier bietet die Nutzung eines Frameworks die selben Vorteile. Um die Entwicklungstechnologien für vollständige Anwendungen kompakt zu halten, gibt es sogenannte Softwarestacks, welche Technologien zu einer Plattform vereinen und die Interoperabilität dieser gewährleisten.
+Um heutzutage eine vollständige Webanwendung -- Datenspeicher, Logik und Darstellung -- zu erstellen, gibt es unterschiedlichste Herangehensweisen. Um diesen Prozess zu vereinfachen, wird in den meisten Fällen ein Framework, wie in Kap.~\ref{cha:javascript-frameworks} erläutert, verwendet. Javascript Frameworks werden bevorzugt für das Frontend herangezogen. Das Backend kann, unabhängig vom Frontend, in jeder beliebigen Programmiersprache umgesetzt werden (Javascript, PHP, Python, ...), aber auch hier bietet die Nutzung eines Frameworks Vorteile. Um die Entwicklungstechnologien für vollständige Anwendungen kompakt zu halten, gibt es sogenannte Softwarestacks, welche Technologien zu einer Plattform vereinen und die Interoperabilität dieser gewährleisten. Mehr dazu in Kap.~\ref{cha:mean-stack}.
 
 \section{Komponentenorientierte Javascript-Frameworks und -Bibliotheken}
 \label{cha:javascript-frameworks}
@@ -23,7 +23,7 @@ Alle aufgelisteten Frameworks und Bibliotheken sind verfügbar unter der MIT-Liz
 
 \subsection{Angular}
 \label{sec:angular}
-Angular ist ein TypeScript basierendes Framework. Entwickelt und gewartet von Google, beschrieben als "`Superheroic JavaScript MVW Framework"'. Angular (auch "`Angular 2+"', "`Angular 2"' oder "`ng2"') ist der von Grund auf neu geschriebene, größtenteils inkompatibler Nachfolger von AngularJS (auch "`Angular.js"' oder "`AngularJS 1.x"').
+Angular ist ein TypeScript basierendes Framework, entwickelt und gewartet von Google, beschrieben als "`Superheroic JavaScript MVW Framework"'. Angular (auch "`Angular 2+"', "`Angular 2"' oder "`ng2"') ist der von Grund auf neu geschriebene, größtenteils inkompatible Nachfolger von AngularJS (auch "`Angular.js"' oder "`AngularJS 1.x"').
 AngularJS wurde im Oktober 2010 veröffentlicht und bekommt weiterhin bug-fixes, \etc. Das neue Angular wurde im September 2016 als Version 2 veröffentlicht. Die aktuellste Version ist 4.3.6 (Stand 23. August 2017). Die Versionsnummer 3 wurde übersprungen, da eines der NPM-Pakete von Angular 2 bereits die Version v3.3.0 trug\footnote{\url{http://angularjs.blogspot.co.at/2016/12/ok-let-me-explain-its-going-to-be.html}}.
 
 \subsubsection{Angular Komponente}
@@ -35,6 +35,8 @@ Die Definition laut der offiziellen Angular-Dokumentation \cite{angular-componen
 	\end{english}
 \end{quote}
 
+\begin{program}[!htbp]
+\caption{Angular Komponente}
 \begin{JsCode}
 	import { Component } from '@angular/core';
 	
@@ -49,17 +51,19 @@ Die Definition laut der offiziellen Angular-Dokumentation \cite{angular-componen
 		}
 	}
 \end{JsCode}
+\end{program}
 Angewendet wird diese Komponente wie folgt:
 \begin{JsCode}[numbers=none]
-	<hello-world></hello-world>
+<hello-world></hello-world>
 \end{JsCode}
+
 Was folgende Ausgabe rendert:
 \begin{JsCode}[numbers=none]
-	<p>Hello World</p>
+<p>Hello World</p>
 \end{JsCode}
 
 \subsection{Polymer }
-Polymer (auch "`Polymer-Project"') ist eine Open Source Javascript-Bibliothek zur Erstellung von Webanwendungen mit Webkomponenten. Erstmals erschienen am 29. Mai 2015 und  wird -- ebenso wie Angular -- von Google entwickelt. Der letzte stabile Release war am 18. Oktober 2017 mit der Version 2.2.0.\\
+Polymer (auch "`Polymer-Project"') ist eine Open Source Javascript-Bibliothek zur Erstellung von Webanwendungen mit Webkomponenten. Erstmals erschienen am 29. Mai 2015 und  wird -- ebenso wie Angular -- von Google entwickelt. Der letzte stabile Release(Stand 2. Februar 2018) ist die Version 2.4.0.
 
 \subsubsection{Polymer Komponente}
 Polymer baut auf der Custom-Element Spezifikation auf und fügt dem eine Reihe an Features hinzu wie beispielsweise \cite{polymer-elements}:
@@ -71,6 +75,8 @@ Polymer baut auf der Custom-Element Spezifikation auf und fügt dem eine Reihe a
 		\item Ein Datensystem, welches Datenbindung, Observers für Eigenschaftenänderungen und berechnete Eigenschaften unterstützt.
 	\end{itemize}
 \end{quote}
+\begin{program}[!htbp]
+\caption{Polymer Komponente}
 \begin{JsCode}
 	<link rel='import' href='bower_components/polymer/polymer.html'>
 	<dom-module id='hello-world'>
@@ -91,14 +97,15 @@ Polymer baut auf der Custom-Element Spezifikation auf und fügt dem eine Reihe a
 	</script>
 	</dom-module>
 \end{JsCode}
+\end{program}
 Angewendet wird diese Komponente wie folgt:
 \begin{JsCode}[numbers=none]
-	<link rel='import' href='hello-world.html'>
-	<hello-world></hello-world>
+<link rel='import' href='hello-world.html'>
+<hello-world></hello-world>
 \end{JsCode}
 Was folgende Ausgabe rendert:
 \begin{JsCode}[numbers=none]
-	<p>Hello World</p>
+<p>Hello World</p>
 \end{JsCode}
 
 \subsection{React}
@@ -113,6 +120,8 @@ Die Definition entsprechend der offiziellen React Dokumentation \cite{react-comp
 	\end{english}
 \end{quote}
 
+\begin{program}[!htbp]
+\caption{React Komponente}
 \begin{JsCode}
 	import React, {Component} from "react";
 	
@@ -129,18 +138,20 @@ Die Definition entsprechend der offiziellen React Dokumentation \cite{react-comp
 	}
 	export default HelloWorld;
 \end{JsCode}
+\end{program}
 Angewendet wird diese Komponente wie folgt:
 \begin{JsCode}[numbers=none]
-	import Hello from './HelloWorld';
-	<Hello/>
+import Hello from './HelloWorld';
+<Hello/>
 \end{JsCode}
+
 Was folgende Ausgabe erzeugt:
 \begin{JsCode}[numbers=none]
-	<p>Hello World</p>
+<p>Hello World</p>
 \end{JsCode}
 
 \subsection{Vue }
-Vue (englische Aussprache [/vju/]), auch "`Vue.js"' genannt, beschreibt sich selbst als ein "`progressives Framework zur Entwicklung von User-Interfaces"'\footnote{\url{https://vuejs.org/v2/guide/}}. Vue wurde im Februar 2014 vom Ex-Google-Mitarbeiter Evan You veröffentlicht. Ein markantes Merkmal von Vue ist, dass es hauptsächlich von einer einzelnen Person, ohne die Stütze einer großen Firma, erschaffen wurde. Nur ein paar EntwicklerInnen arbeiten für Evan an der Weiterentwicklung des Frameworks. Die aktuellste Version ist 2.5.2 (Stand 13. Oktober 2017).
+Vue (englische Aussprache [/vju/]), auch "`Vue.js"' genannt, beschreibt sich selbst als ein "`progressives Framework zur Entwicklung von User-Interfaces"'\footnote{\url{https://vuejs.org/v2/guide/}}. Vue wurde im Februar 2014 vom Ex-Google-Mitarbeiter Evan You veröffentlicht. Ein markantes Merkmal von Vue ist, dass es hauptsächlich von einer einzelnen Person, ohne die Stütze einer großen Firma, erschaffen wurde. Nur ein paar EntwicklerInnen arbeiten für Evan an der Weiterentwicklung des Frameworks. Die aktuellste Version ist 2.5.13 (Stand 2. Februar 2018).
 
 \subsubsection{Vue Komponente}
 Die Definition laut der Vue Dokumentation \cite{vue-component}: 
@@ -150,38 +161,42 @@ Die Definition laut der Vue Dokumentation \cite{vue-component}:
 	\end{english}
 \end{quote}
 
+\begin{program}[!htbp]
+\caption{Vue Komponente}
 \begin{JsCode}
-	// register
 	Vue.component('hello-world', {
 		template: '<p>Hello {{ text }} </p>',
 		data: function () {
 			return {text:"World"};
 		}
 	})
-	// root instance
+
 	new Vue({
 		el: '#container'
 	})
 \end{JsCode}
+\end{program}
+
 Angewendet wird diese Komponente wie folgt:
 \begin{JsCode}[numbers=none]
-	<div id="container">
+<div id="container">
 	<hello-world></hello-world>
-	</div>
+</div>
 \end{JsCode}
+
 Was folgende Ausgabe erzeugt:
 \begin{JsCode}[numbers=none]
-	<div id="container">
+<div id="container">
 	<p>Hello World </p>
-	</div>
+</div>
 \end{JsCode}
 
 \section%
 {MEAN Stack%
 	\protect\footnote{http://mean.io/}}%
-
+\label{cha:mean-stack}
 Der MEAN Stack ist ein Javascript Software Stack, um Webanwendung zu bauen. MEAN ist ein Akronym für MongoDB, Express.js, Angular und Node.js. 
-Node.js ist eine Ausführungsumgebung um Javascript serverseitig aus zu führen und als Servertechnologie zu nutzen. Die Architektur ermöglicht asynchronen Input und Output. Um Serveranwendungen vereinfacht entwickeln zu können, wird Express als Framework für Node genutzt. 
+Node.js ist eine Ausführungsumgebung um Javascript serverseitig auszuführen und als Servertechnologie zu nutzen. Die Architektur ermöglicht asynchronen Input und Output. Um Serveranwendungen vereinfacht entwickeln zu können, wird Express als Framework für Node genutzt. 
 Angular dient als Frontend Framework und wurde bereits in Kap.~\ref{sec:angular} behandelt. MongoDB ist eine dokumentenorientierte NoSQL-Datenbank \cite{noSQL}. Diese speichert Daten im binären JSON Format ab und kann ebenso Javascript Code ausführen.
 
 Durch die durchgängige Sprache wird der Datenaustausch zwischen Server und Client primitiv gehalten und erspart Kontextwechsel, welche beim Verwenden von unterschiedlichen Programmiersprachen entstehen. Da das Umdenken in den verschiedenen Sprachen wegfällt, werden nicht zwingend Spezialisten in jedem Bereich benötigt und es können so Anwendungen von weniger EntwicklerInnen realisiert werden. 

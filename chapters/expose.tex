@@ -17,31 +17,30 @@ Eine CRUD-Anwendung (Create, Read, Update, Delete) ist eine Anwendung, welche di
 Angular oder React wären für die Umsetzung einer solchen Anwendung geeignet. Aus heutiger Sicht zählen diese Technologien zu den gängigsten Frameworks und werden von zahlreichen EntwicklerInnen stetig verbessert.
 Diese besagten Frameworks sind mit einer steilen Lernkurve behaftet und benötigen Zeit um sich damit vertraut zu machen.
 
-Im Gegensatz dazu sind Webkomponenten logisch deklariert und bauen lediglich auf Kenntnissen von nativem HTML, CSS und Javascript auf. Die Unterstützung wird noch nicht von jedem Browser gewährleistet, was einige EntwicklerInnen noch zögern lässt um komplett auf Webkomponenten zu setzen.
-Google hat mit Polymer\footnote{https://www.polymer-project.org/} eine Javascript-Bibliothek geschaffen, welche die Kreierung und Nutzung von Webkomponenten ungemein vereinfacht. Darüber hinaus nutzt diese Bibliothek Polyfills, was die Funktionen, welche Polymer benötigt, bei Bedarf liefert und wird dadurch nicht nur in allen gängigen Webbrowsern -- Chrome, Firefox, Edge, Safari --  sondern auch in deren älteren Versionen, die die notwendigen Funktionen nicht implementiert haben, unterstützt \cite{polymer-compatibility}. Native Browserunterstützung ist bereits bei den meisten in Entwicklung und würde Polyfills überflüssig machen.  
+Im Gegensatz dazu sind Webkomponenten logisch deklariert und bauen lediglich auf Kenntnissen von nativem HTML, CSS und Javascript auf. Die Unterstützung wird noch nicht von jedem Browser gewährleistet und verursacht aus diesem Grund ein Zögern bei einigen EntwicklerInnen, um komplett auf Webkomponenten zu setzen.
+Google hat mit Polymer\footnote{https://www.polymer-project.org/} eine Javascript-Bibliothek geschaffen, welche die Kreierung und Nutzung von Webkomponenten ungemein vereinfacht. Darüber hinaus nutzt diese Bibliothek Polyfills, die Funktionen, welche Polymer benötigt, bei Bedarf liefert und wird dadurch nicht nur in allen gängigen Webbrowsern -- Chrome, Firefox, Edge, Safari --  sondern auch in deren älteren Versionen, die die notwendigen Funktionen nicht implementiert haben, unterstützt \cite{polymer-compatibility}. Native Unterstützung ist bereits bei den meisten Browserherstellern in Entwicklung und würde Polyfills überflüssig machen.  
   
-%TODO mehr über CMS im Stand der Technik schreiben
 \section{Forschungsfrage}
 
-Aus diesen Ansätzen ergibt sich die folgende Forschungsfrage für diese Bachelorarbeit:
+Aus diesen Ansätzen ergibt sich folgende Forschungsfrage für diese Bachelorarbeit:
 
 \begin{quote}
-Wie muss ein Webanwendung programmatisch konzipiert werden, um die grundlegenden Funktionen weitgehend mittels server- und clientseitigen Webkomponenten zu realisieren.
+Wie muss ein Webanwendung programmatisch konzipiert werden, um die grundlegenden Funktionen weitgehend mittels server- und clientseitigen Webkomponenten zu realisieren?
 \end{quote}
 
 \section{Methodik}
 
 Um diese Frage zu beantworten, soll die Bachelorarbeit als eine Kombination von Literaturarbeit und praktischer \bzw prototypischer Umsetzung realisiert werden.
 
-Zunächst soll aus bestehender Literatur (erweiternd zu Abschnitt \ref{sec:hintergrund}) erörtert werden, wie mit dem Thema der Webkomponenten umgegangen wird, und wie mit komponentenorientierte Frameworks. Gemeinsame Faktoren wie Mechaniken sollen daraus extrahiert werden und als Grundlage für ein eigenes, theoretisches Konzept dienen. Die Vorteile und Limitierungen von Webkomponenten werden dabei erörtert. Dieses Konzept soll schlussendlich eine Liste von Kerntechniken enthalten, welche die Umsetzung einer CRUD-Anwendung mittels Webkomponenten ermöglicht.
+Zunächst soll aus bestehender Literatur (erweiternd zu Abschnitt \ref{sec:hintergrund}) erörtert werden, wie mit dem Thema der Webkomponenten und mit komponentenorientierte Frameworks umgegangen wird. Gemeinsame Faktoren sollen daraus extrahiert werden und als Grundlage für ein eigenes, theoretisches Konzept dienen. Die Vorteile und Limitierungen von Webkomponenten werden dabei erörtert. Dieses Konzept soll schlussendlich eine Liste von Kerntechniken enthalten, welche die Umsetzung einer CRUD-Anwendung mittels Webkomponenten ermöglicht.
 
-Überprüft soll die Anwendbarkeit dieses Konzept durch einen eigenen, im Rahmen des fünften Semesters entwickelten, Prototypen werden.
+Überprüft soll die Anwendbarkeit dieses Konzepts, durch einen eigenen, im Rahmen dieser Arbeit entwickelten Prototypen, werden.
 
 \section{Erwartete Ergebnisse}
 
 Als konkretes Ergebnis wird ein Gerüst mit Webkomponenten erstellt, welches als Grundlage für die Erstellung einer Webanwendung dienen soll. Es wird erwartet, dass sich solche konkreten Techniken finden und umsetzen lassen.
 
-Bei den Tests der praktischen Umsetzung der Webkomponenten in einer CRUD-Anwendung wird ebenfalls eine positive Evaluierung erwartet, da es bereits erfolgreiche Konzepte basierend auf server- und clientseitigen Webkomponenten gibt, auf deren Erfahrungen aufgebaut werden kann.
+Bei der praktischen Umsetzung der Webkomponenten in einer CRUD-Anwendung wird ebenfalls eine positive Evaluierung erwartet, da es bereits erfolgreiche Konzepte basierend auf server- und clientseitigen Webkomponenten gibt und somit auf deren Erfahrungen aufgebaut werden kann.
 
 \section{Aufbau der Arbeit}
-Im ersten Teil dieser Arbeit werden technische Grundlagen bezüglich Webkomponenten erörtert, und was es mit REST auf sich hat. Im dritten Kapitel werden State of the Art Technologien besprochen. Im Anschluss an dieses Kapitel wird das grundlegende Konzept der praktischen Arbeit erläutert. Im fünften Kapitel wird die konkrete Implementierung der Webanwendung behandelt. Im darauffolgenden Kapitel -- Evaluierung -- werden objektiv die Vor- und Nachteile, der im Fokus stehenden Technologie, aufgezeigt. Im siebten und letzten Kapitel wird  zusammenfassend die persönliche Meinung, bezüglich der Thematik, einfließen. 
+Im ersten Teil dieser Arbeit werden technische Grundlagen bezüglich Webkomponenten erörtert, und wie eine REST-Architektur aufgebaut ist. Im dritten Kapitel werden State of the Art Technologien besprochen. Im Anschluss wird das grundlegende Konzept der praktischen Arbeit erläutert. Im fünften Kapitel wird die konkrete Implementierung der Webanwendung behandelt. Im darauffolgenden Abschnitt -- Evaluierung -- werden objektiv die Vor- und Nachteile, der im Fokus stehenden Technologie, aufgezeigt. Im siebten und letzten Kapitel wird  zusammenfassend die persönliche Meinung, bezüglich der Thematik, einfließen. 

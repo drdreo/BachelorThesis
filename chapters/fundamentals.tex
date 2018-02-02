@@ -18,47 +18,53 @@ Custom-Elements gibt den EntwicklerInnen die Fähigkeit, eigene, voll funktionsf
 
 Diese Spezifikation ist Teil eines größeren Projekts, das Internet zu rationalisieren, im Hinblick auf EntwicklerInnen zugänglichen Schnittstellen, wie beispielsweise die Custom-Elements-Definition. Jedoch gibt es immer noch Limitierungen, welche das komplette Potenzial -- semantisch und funktional -- einschränken, um das Verhalten bestehender HTML-Elemente vollständig, mit selbst erstellten Elementen, zu beschreiben. Mehr dazu findet sich in \cite{custom-elements}.
 
-Exemplarische Definition:
+\begin{program}[!htbp]
+\caption{Exemplarische Definition eines Custom-Elements}
 \begin{JsCode}
-	class HelloWorld extends HTMLElement {...};
-	customElements.define("hello-world", HelloWorld);
+class HelloWorld extends HTMLElement {...};
+customElements.define("hello-world", HelloWorld);
 \end{JsCode}
-
+\end{program}
 \subsection{HTML Import}
-HTML Importe ermöglichen das Inkludieren und Wiederverwenden von HTML Dokumenten in anderen. Dieser Import kann all jenes enthalten, was in diesem HTML-Dokument definiert ist (Javascript, CSS, HTML, ...). 
-Diese Möglichkeit, mehrere Technologien in einem Import, quasi eine URL, zu bündeln, ist eine kleine, aber wesentliche. Aktuell wird es von kaum einem Browser, außer Chrome 62,  unterstützt\footnote{\url{https://caniuse.com/\#search=HTML\%20Import}}. Mehr über \emph{HTML Imports} in \cite{html-imports}.
+HTML Importe ermöglichen das Inkludieren und Wiederverwenden von HTML-Dokumenten in anderen Dokumenten. Dieser Import beinhaltet all jene Elemente, die in einem HTML-Dokument definiert sind (Javascript, CSS, HTML, ...). 
+Diese Möglichkeit, mehrere Technologien in einem Import, sozusagen eine URL, zu bündeln, ist klein, aber wesentlich. Aktuell wird es von kaum einem Browser, außer Chrome 62,  unterstützt\footnote{\url{https://caniuse.com/\#search=HTML\%20Import}}. Mehr über \emph{HTML Imports} in \cite{html-imports}.
 
-Exemplarischer Import:
+\begin{program}[!htbp]
+\caption{Exemplarischer HTML Import}
 \begin{JsCode}
-	<link rel="import" href="hello-world.html">
+<link rel="import" href="hello-world.html">
 \end{JsCode}
-
+\end{program}
 \subsection{HTML Templates}
 Das Template Element kapselt Bestandteile einer Webseite ab, welche durch Skripte geklont und zur Laufzeit in das Dokument eingefügt werden können. Die Darstellung des Elements ist beim Laden und erstmaligen rendern der Seite leer, und wird zur Laufzeit mit Javascript gerendert. Dieses Element kann als Inhaltsplatzhalter angesehen werden, welcher für spätere Verwendung gespeichert wird. 
 
-Exemplar:
+\begin{program}[!htbp]
+\caption{Exemplarisches HTML Template}
+\label{prog:html-template}
 \begin{JsCode}
 <template id="template">
 	<p>Hello World!</p>
 </template>
 \end{JsCode}
-Das p-Element, wie in diesem Beispiel gezeigt, ist kein Kindelement des Template Elements im DOM. Es ist ein Kind des DocumentFragment, welches vom content IDL Attribut des Templates zurückgegeben wird, wie in \cite{html-templates} erläutert.
+\end{program}
+Das p-Element, wie im Programm~\ref{prog:html-template} gezeigt, ist kein Kindelement des Template Elements im DOM. Es ist ein Kind des DocumentFragment, welches vom content IDL Attribut des Templates zurückgegeben wird, wie in \cite{html-templates} erläutert.
 
 \subsection{Shadow DOM}
 Der Shadow Dom bietet eine API zur Erstellung eines separaten Baumes, Shadow Tree genannt, welcher an ein Element angehängt werden kann.
-Das bringt die Abkapselung von DOM-Elementen und CSS mit sich. Beispielsweise kann unorganisierter CSS-Code von einem Bereich in den anderen durchsickern, was wiederum einen Konflikt erzeugen könnte, welcher unbeabsichtigtes Verhalten hervorbringt. 
+Das bringt die Abkapselung von DOM-Elementen und CSS mit sich. Beispielsweise kann unorganisierter CSS-Code von einem Bereich in den anderen durchsickern und wiederum einen Konflikt erzeugen, welcher unbeabsichtigtes Verhalten hervorbringt. 
 
 Shadow DOM löst dieses Problem durch Isolierung der CSS-Bereiche und Abkapselung des DOM. 
 Gemeinsam mit der Custom-Element-API ermöglicht es das Schreiben von Komponenten mit in sich geschlossenem HTML, CSS und Javascript.
 
-%Shadow DOM is just normal DOM with two differences: 1) how it's created/used and 2) how it behaves in relation to the rest of the page. Normally, you create DOM nodes and append them as children of another element. With shadow DOM, you create a scoped DOM tree that's attached to the element, but separate from its actual children. This scoped subtree is called a shadow tree. The element it's attached to is its shadow host. Anything you add in the shadows becomes local to the hosting element, including <style>. This is how shadow DOM achieves CSS style scoping.
-
 Um den Shadow DOM eines Elements zu erstellen muss diesem lediglich der Shadow Root angehängt werden.
+\begin{program}[!htbp]
+\caption{Exemplarisches HTML Template}
+\label{prog:shadow-dom}
 \begin{JsCode}
-	const p = document.createElement('p');
-	const shadowRoot = p.attachShadow({mode: 'open'});
+const p = document.createElement('p');
+const shadowRoot = p.attachShadow({mode: 'open'});
 \end{JsCode}
-
+\end{program}
 
 \section{Representational State Transfer  API}
 In diesem Abschnitt wird der Begriff der \begin{english}
@@ -72,7 +78,7 @@ Der Null Stil beschreibt den Status eines Systems, wenn jenes keine Abgrenzungen
 \subsubsection{Client-Server}
 Nach dem Client-Server-Architektur Stil werden Aufgabenbereiche auf Client und Server aufgeteilt. Meist wird vom Client eine Aufgabe gestellt, und diese vom Server verarbeitet. 
 \subsubsection{Zustandslosigkeit}
-Jegliche REST-Zugriffe sind zustandslos. Heißt, jede Anfrage enthält alle benötigten Informationen, die der Endpunkt braucht, um diese zu verstehen und zu verarbeiten. Unabhängig davon, wer oder was die Anfrage getätigt hat.  
+Jegliche REST-Zugriffe sind zustandslos. Das bedeutet, jede Anfrage enthält alle benötigten Informationen, die der Endpunkt braucht, um diese zu verstehen und zu verarbeiten. Unabhängig davon, wer oder was die Anfrage getätigt hat.  
 \subsubsection{Einheitliche Schnittstelle}
 Eine standardisierte Schnittstelle soll durch die Trennung der Zuständigkeiten die Einfachheit fördern, sowie die darunter liegende Implementierung und Kommunikation verbergen. 
 \subsubsection{Caching}

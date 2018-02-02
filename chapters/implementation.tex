@@ -1,9 +1,9 @@
 \chapter{Implementierung der Webanwendung}
 
-Die AnwenderInnen sollen zu Beginn Datensätze anlegen können. Im Prototypen wurde das Datenmodell eines Nutzers mit Nutzername, E-Mail und Passwort herangezogen.
-Nachdem die AnwenderInnen die Daten für einen User ausgefüllt haben, kann dieser angelegt werden. Nach elementaren Validierungen werden die Daten an den Server übermittelt. Dieser speichert den User in der Datenbank ab. 
-In der Listenansicht sehen die AnwenderInnen alle bereits angelegten User in einer Tabelle und per Klick auf dessen Namen wird zur Detailansicht weitergeleitet. Hier wird ein Formular mit den Nutzerdaten ausgefüllt, welche verändert und aktualisiert werden können.   
-Auf der Detailseite findet sich ebenso ein Lösch-Knopf, um einen bestehenden User zu entfernen. Dadurch sind alle CRUD-Operation abgedeckt.
+Die AnwenderInnen sollen zu Beginn Datensätze anlegen können. Im Prototypen wurde das Datenmodell von Personen mit Benutzername, E-Mail und Passwort herangezogen.
+Nachdem die AnwenderInnen das Formular für eine Person ausgefüllt haben, kann dieser Datensatz angelegt werden. Nach elementaren Validierungen werden die Daten an den Server übermittelt. Dieser speichert diese wiederum in der Datenbank ab. 
+In der Listenansicht sehen die AnwenderInnen alle bereits angelegten Personen in einer Tabelle und per Klick auf den Namen wird zur Detailansicht weitergeleitet. Hier wird ein Formular mit den Nutzerdaten ausgefüllt, welche verändert und aktualisiert werden können.   
+Auf der Detailseite findet sich ebenso ein Lösch-Knopf, um eine bestehende Person zu entfernen. Dadurch sind alle CRUD-Operation abgedeckt.
 \section{Umsetzung mit Dependencies Electron / Scram-Engine}
 Um die Nutzung von Webkomponenten am Server zu ermöglichen, werden zwei konkrete Technologien benötigt, da Webkomponenten grundsätzlich nur im Browser funktionieren.
 \subsection{Electron}
@@ -18,10 +18,10 @@ Durch die Kombination der beiden Technologien können Webkomponenten weitaus meh
 Da universelle Webkomponenten auf Electron als deren Plattform angewiesen sind, muss das System, welches diese betreibt, relativ leistungsstark sein. Jordan Last arbeitet an einer Lösung, um die Electron-Abhängigkeit -- und dadurch die Chromium-Abhängigkeit -- loszuwerden. Jegliche Interessenten, die an dieser Optimierung mitwirken möchten, können ihn kontaktieren\footnote{https://github.com/lastmjs}.
 
 \section{Implementierung der Komponenten}
-Der für diese Arbeit entwickelte Prototyp kann in die Hauptteile Frontend und Backend eingeteilt werden. Wobei das Backend nochmal in Server und Datenbank unterteilt wird. 
+Der für diese Arbeit entwickelte Prototyp kann in die Hauptteile Frontend und Backend eingeteilt werden. Wobei das Backend nochmals in Server und Datenbank unterteilt wird. 
 
 \subsection{Frontend}
-Im Frontend wurde hauptsächlich auf bereits vorhanden Webkomponenten aufgebaut. Es wurden Standard HTML-Elemente durch paper-input Elemente\footnote{https://www.webcomponents.org/collection/PolymerElements/paper-input-elements} ersetzt, um ein abgestimmtes Gesamtbild zu erzeugen, ohne sich auf das Design konzentrieren zu müssen. So wurde bei dem Anlegen eines neuen Nutzers, wie in Abb. \ref{fig:user_create} ersichtlich, auf <paper-input> Elemente mit einem <iron-icon> Element gesetzt. Das Aktualisieren eines Nutzers ist das selbe Formular, lediglich mit anderen <paper-button> Komponenten. Die Auflistung, aller bereits erstellten Nutzer, wurde durch ein <paper-datatable-api> Element erstellt. Jegliche Kommunikation zwischen Frontend und Backend wurde über eine REST-API gehandhabt. Die Anfragen wurden durch <iron-ajax> Komponenten vollzogen, welche eine Webkomponente für einfache ajax-Anfragen ist.
+Im Frontend wurde hauptsächlich auf bereits vorhandene Webkomponenten aufgebaut. Es wurden Standard HTML-Elemente durch paper-input Elemente\footnote{https://www.webcomponents.org/collection/PolymerElements/paper-input-elements} ersetzt, um ein abgestimmtes Gesamtbild zu erzeugen, ohne sich auf das Design konzentrieren zu müssen. So wurde bei dem Anlegen einer neuen Person, wie in Abb. \ref{fig:user_create} ersichtlich, auf <paper-input> Elemente mit einem <iron-icon> Element gesetzt. Das Aktualisieren eines Nutzers ist das selbe Formular, lediglich mit anderen <paper-button> Komponenten. Die Auflistung, aller bereits erstellten Personen, wurde durch ein <paper-datatable-api> Element erstellt. Jegliche Kommunikation zwischen Frontend und Backend wurde über eine REST-API gehandhabt. Die Anfragen wurden durch <iron-ajax> Komponenten vollzogen, welche eine Webkomponente für einfache ajax-Anfragen ist.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/user_create.jpeg}

@@ -20,17 +20,17 @@
 \newcommand{\@bibtitle}{Quellenverzeichnis}
 \newcommand{\@bibtitleLiteratur}{Literatur}
 \newcommand{\@bibtitleAvmedia}{Filme und audiovisuelle Medien}
-\newcommand{\@bibtitleOnline}{Online-Quellen}	
+\newcommand{\@bibtitleOnline}{Online-Quellen}
 
 \ifthenelse{\equal{\hgb@MainLanguage}{english}}{%
 	\renewcommand{\@bibtitle}{References}
 	\renewcommand{\@bibtitleLiteratur}{Literature}
 	\renewcommand{\@bibtitleAvmedia}{Films and audio-visual media}
-	\renewcommand{\@bibtitleOnline}{Online sources}	
+	\renewcommand{\@bibtitleOnline}{Online sources}
 }{}
 
 \defbibfilter{literature}{
-	not ( type=movie or type=video or type=music or type=audio or 
+	not ( type=movie or type=video or type=music or type=audio or
 				type=online or type=electronic or type=www or type=software )}
 
 \defbibfilter{avmedia}{%
@@ -49,7 +49,7 @@
 }
 
 %See http://www.jr-x.de/publikationen/latex/tipps/zeilenumbruch.html
-\newenvironment{bibhyphenation}% 
+\newenvironment{bibhyphenation}%
 	{\hyphenpenalty=2%		(default 50)
 	 \tolerance=9999%			(default 200)
 	 \exhyphenpenalty=2%	(default 50)
@@ -71,7 +71,7 @@
 	\ifthenelse{\equal{#1}{nosplit}}%
 		{% create a single bibliography with all entries:
 			\printbibheading[heading=bibintoc,title={\@bibtitle}]
-			\begin{bibhyphenation}	
+			\begin{bibhyphenation}
 			\printbibliography[heading=noheader]
 			\end{bibhyphenation}
 		}
@@ -85,7 +85,7 @@
 		}%
 }
 
-% Suppress unusual "In:" within journal article references. 
+% Suppress unusual "In:" within journal article references.
 % see http://tex.stackexchange.com/questions/10682/suppress-in-biblatex
 \renewbibmacro{in:}{%
 	\ifentrytype{article}{}{%

@@ -4,17 +4,17 @@
 \label{cha:webcomponents}
 Wie der Name -- Webkomponente -- suggeriert, ermöglicht diese Technologie die Webentwicklung in kleinere, wiederverwendbare, modulare Container zu "`komponentisieren"'.  Der klare Vorteil besteht darin, dass diese Komponenten, unabhängig von einem Framework, vollständig mit "`vanilla"' HTML, CSS und Javascript kreiert werden können, und wie in Kap.~\ref{cha:component_usage} erwähnt, Code wartbar machen.
 \newline
-Webkomponenten bestehen aus 4 separaten W3C Standards\footnote{\url{https://www.w3.org/standards/techs/components\#w3c\_all}}:
+Webkomponenten bestehen aus vier separaten W3C Standards\footnote{\url{https://www.w3.org/standards/techs/components\#w3c\_all}}:
 \begin{itemize}
 	\item Custom Elements - APIs um neue HTML Elemente zu definieren
 	\item HTML Imports - deklarative Methode um HTML Dokumente in andere zu importieren
 	\item HTML Templates - <template>-Element, welches Dokumenten eigenen DOM ermöglicht
 	\item Shadow DOM - DOM und Styling abkapseln
 \end{itemize}
-An einer Standardisierung der Webkomponenten wird bereits Seiten der W3C gearbeitet. Mehr dazu findet sich in \cite{w3c-components}. Jedoch um diese derzeitig in allen größeren Browsern zu nutzen, gibt es sogenannte Polyfills \cite{polyfill}. Dieses Polyfill ist ein Codestück, welches Technologie zur Verfügung stellt, die der Browser nicht nativ unterstützt.
+An einer Standardisierung der Webkomponenten wird bereits seitens der W3C gearbeitet. Mehr dazu findet sich in \cite{w3c-components}. Jedoch um diese derzeitig in allen größeren Browsern zu nutzen, gibt es sogenannte Polyfills \cite{polyfill}. Dieses Polyfill ist ein Codestück, welches Technologie zur Verfügung stellt, die der Browser nicht nativ unterstützt.
 
 \subsection{Custom-Elements}
-Custom-Elements gibt den EntwicklerInnen die Fähigkeit, eigene, voll funktionsfähige DOM-Elemente zu erstellen, existierende HTML-Tags zu erweitern und/oder von anderen EntwicklerInnen erstellte Elemente zu nutzen.  
+Der Custom-Elements Standard gibt den EntwicklerInnen die Fähigkeit, eigene, voll funktionsfähige DOM-Elemente zu erstellen, existierende HTML-Tags zu erweitern und/oder von anderen EntwicklerInnen erstellte Elemente zu nutzen.  
 
 Diese Spezifikation ist Teil eines größeren Projekts, das Internet zu rationalisieren, im Hinblick auf EntwicklerInnen zugänglichen Schnittstellen, wie beispielsweise die Custom-Elements-Definition. Jedoch gibt es immer noch Limitierungen, welche das komplette Potenzial -- semantisch und funktional -- einschränken, um das Verhalten bestehender HTML-Elemente vollständig, mit selbst erstellten Elementen, zu beschreiben. Mehr dazu findet sich in \cite{custom-elements}.
 
@@ -36,7 +36,7 @@ Diese Möglichkeit, mehrere Technologien in einem Import, sozusagen eine URL, zu
 \end{JsCode}
 \end{program}
 \subsection{HTML Templates}
-Das Template Element kapselt Bestandteile einer Webseite ab, welche durch Skripte geklont und zur Laufzeit in das Dokument eingefügt werden können. Die Darstellung des Elements ist beim Laden und erstmaligen rendern der Seite leer, und wird zur Laufzeit mit Javascript gerendert. Dieses Element kann als Inhaltsplatzhalter angesehen werden, welcher für spätere Verwendung gespeichert wird. 
+Das Template Element kapselt Bestandteile einer Webseite ab, welche durch Skripte geklont und zur Laufzeit in das Dokument eingefügt werden können. Die Darstellung des Elements ist beim Laden und erstmaligen Rendern der Seite leer, und wird zur Laufzeit mit Javascript gerendert. Dieses Element kann als Inhaltsplatzhalter angesehen werden, welcher für spätere Verwendung gespeichert wird. 
 
 \begin{program}[!htbp]
 \caption{Exemplarisches HTML Template}
@@ -50,7 +50,7 @@ Das Template Element kapselt Bestandteile einer Webseite ab, welche durch Skript
 Das p-Element, wie im Programm~\ref{prog:html-template} gezeigt, ist kein Kindelement des Template Elements im DOM. Es ist ein Kind des DocumentFragment, welches vom content IDL Attribut des Templates zurückgegeben wird, wie in \cite{html-templates} erläutert.
 
 \subsection{Shadow DOM}
-Der Shadow Dom bietet eine API zur Erstellung eines separaten Baumes, Shadow Tree genannt, welcher an ein Element angehängt werden kann.
+Der Shadow DOM bietet eine API zur Erstellung eines separaten Baumes, Shadow Tree genannt, welcher an ein Element angehängt werden kann.
 Das bringt die Abkapselung von DOM-Elementen und CSS mit sich. Beispielsweise kann unorganisierter CSS-Code von einem Bereich in den anderen durchsickern und wiederum einen Konflikt erzeugen, welcher unbeabsichtigtes Verhalten hervorbringt. 
 
 Shadow DOM löst dieses Problem durch Isolierung der CSS-Bereiche und Abkapselung des DOM. 
@@ -58,7 +58,7 @@ Gemeinsam mit der Custom-Element-API ermöglicht es das Schreiben von Komponente
 
 Um den Shadow DOM eines Elements zu erstellen muss diesem lediglich der Shadow Root angehängt werden.
 \begin{program}[!htbp]
-\caption{Exemplarisches HTML Template}
+\caption{Exemplarische Shadow DOM Erstellung}
 \label{prog:shadow-dom}
 \begin{JsCode}
 const p = document.createElement('p');
@@ -83,9 +83,9 @@ Jegliche REST-Zugriffe sind zustandslos. Das bedeutet, jede Anfrage enthält all
 Eine standardisierte Schnittstelle soll durch die Trennung der Zuständigkeiten die Einfachheit fördern, sowie die darunter liegende Implementierung und Kommunikation verbergen. 
 \subsubsection{Caching}
 Die effizienteste Netzwerkanfrage ist jene, die das Netzwerk nicht benutzt.
-Soll heißen, dass eine wiederverwendbare, gecachte Antwort die Performanteste ist. 
+Soll heißen, dass eine wiederverwendbare, gecachte Antwort die performanteste ist. 
 \subsubsection{Stufen Systeme}
-Das Zielsystem soll, wie in Kap.~\ref{cha:webapplication_structure} weiter behandelt, mit n-Stufen aufgebaut sein, damit der Anwender lediglich auf eine Schnittstelle, einer Stufe, zugreifen muss, und die anderen verborgen bleiben können.
+Das Zielsystem soll, wie in Kap.~\ref{cha:webapplication_structure} weiter behandelt, mit n-Stufen aufgebaut sein, damit der Anwender lediglich auf eine Schnittstelle einer Stufe zugreifen muss, und die anderen verborgen bleiben können.
 
 \subsection{Praxis}
 In der Praxis wird das REST-Paradigma bevorzugt per HTTP/S realisiert. Services werden über eine URL/einen URI angesprochen. Wie eine Anfrage bearbeitet werden soll, kann per HTTP-Methode (GET, POST, PUT, \etc) verfeinert werden. 

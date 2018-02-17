@@ -13,9 +13,9 @@ Der gebräuchlichste Stufenansatz ist der 3-stufige, siehe Abb.~\ref{fig:3-stufe
 
 Obwohl der 3-Stufen-Ansatz die Skalierbarkeit erhöht und eine Trennung der Anwendungslogik von den Anzeige- und Datenverwaltungsschichten einführt, trennt er die Anwendung nicht wirklich in spezialisierte Schichten. Für Prototyp- oder einfache Webanwendungen kann eine dreistufige Architektur ausreichen. Bei komplexen Anforderungen an solche Anwendungen ist ein 3-stufiger Ansatz jedoch in mehreren Schlüsselbereichen, einschließlich Flexibilität und Skalierbarkeit, unzureichend, und es wäre sinnvoll, einen n-Stufen-Ansatz zu wählen \cite{nTier-architecture}.
 
-Der größte Nachteil von diesen Ansätzen ist der zusätzliche Overheadaufwand und eine höhere Latenz, was wiederum die der NutzerInnen wahrgenommen Geschwindigkeit mindert.
+Der größte Nachteil von diesen Ansätzen ist der zusätzliche Overheadaufwand und eine höhere Latenz, was wiederum die von den NutzerInnen wahrgenommen Geschwindigkeit mindert.
 
-Die Trennung von Logik ist in der Webentwicklung ein wesentliches Konzept. Wie in diesem Kapitel die Abstraktion durch Stufen, oder Ebenen, wird im folgenden Kapitel \ref{cha:component_usage} die Trennung von Logik, mittels Komponenten, behandelt.
+Die Trennung von Logik ist in der Webentwicklung ein wesentliches Konzept. Wie in diesem Kapitel die Abstraktion durch Stufen, oder Ebenen, wird im folgenden Kapitel \ref{cha:component_usage} die Trennung von Logik mittels Komponenten behandelt.
 
 \begin{figure}
 	\centering
@@ -30,15 +30,15 @@ Die Trennung von Logik ist in der Webentwicklung ein wesentliches Konzept. Wie i
 Das Web besteht aus Bausteinen, sogenannten Elementen. Wenn EntwicklerInnen beispielsweise einen Link mittels einem a-Tag nutzen, wird erwartet, dass dieser sich wie ein Link-Element verhält. Dieses Element hat seine standardmäßige blaue Farbe, einen Handzeiger, wenn sich die Maus über diesem befindet und vor allem die Funktionalität, dass bei einem Klick auf das Element zu einer neuen URL weitergeleitet wird. Dieses Verhalten und Styling wird ohne jegliches Einwirken der EntwicklerInnen bereitgestellt. Jedes HTML-Element funktioniert nach diesem Prinzip, welches HTML Code einfacher zu schreiben und verständlicher macht.
 Durch Kombination solcher Elemente, mit eigens definierten Stylesheets können komplexe Gerüste aus HTML-Elementen, mit komplexem CSS/Javascript entstehen.
 
-Damit EntwicklerInnen nicht die komplette Struktur im Kopf behalten müssen, und bei Problemen nur diese, das aufgetretene Problem beheben können, hat es sich bewehrt, Code in kleine, überschaubare Teile herunter zu brechen. In Einheiten, welche das gesamte Gerüst wartbar machen. Diese Teile können einfachere Funktionen, Module, Komponenten oder viele andere Ansätze sein, welche Systeme in atomare Einzelteile aufteilen \cite{components-benefit}.
+Damit EntwicklerInnen nicht die komplette Struktur im Kopf behalten müssen, und bei Problemen nicht nur diese das aufgetretene Problem beheben können, hat es sich bewehrt, Code in kleine, überschaubare Teile herunter zu brechen. In Einheiten, welche das gesamte Gerüst wartbar machen. Diese Teile können einfachere Funktionen, Module, Komponenten oder viele andere Ansätze sein, welche Systeme in atomare Einzelteile aufteilen \cite{components-benefit}.
 
 Komponentenbasierende UI-Bibliotheken waren der Standard, um komplexe Anwendungen zu bauen und moderne Webframeworks wie Angular oder Vue ermöglichen den EntwicklerInnen die Nutzeroberfläche aus wiederverwendbaren Blöcken zusammenzusetzen. Der große Unterschied zwischen diesen Frameworks und Webkomponenten ist, dass Webkomponenten die Komponentisierung auf dem DOM-Level durchführen, sodass Custom-Elemente ohne ein Framework, wie Standard HTML-Elemente genutzt werden können. 
 
 Um also die Definition der, in dieser Arbeit fokussierten Technologie -- einer Webkomponente -- zusammenzufassen: Eine entkoppelte Sammlung von Funktionalität oder Prozessen und Logik, mit einer verständlichen Schnittstelle oder API um der Komponente Funktionalität abzurufen.
 
 
-\section{Eigene Idee, technisches Design}
-Durch den Webkomponenten-Standard wird es möglich sein, Komponenten ausschließlich zur Erstellung einer Webanwendung zu nutzen. Um die Grenzen der Nutzung von herkömmlichen Webkomponenten zu überschreiten, und die Verwendung auszuweiten, entwickelte sich die Idee, Webkomponenten gänzlich, oder Teile des Standards, zum Schreiben von CRUD-Anwendungen, und wie in Kap.~\ref{cha:webapplication_structure} erwähnt, die einzelnen Schichten durch Webkomponenten zu realisieren, oder mit den Ebenen durch diese Technologie zu kommunizieren. Sozusagen sollen die Schichten -- Darstellung, Logik, Datenverwaltung -- , welche in Abb.~\ref{fig:3-stufen-architektur} gezeigt sind, mit Webkomponenten realisiert werden. 
+\section{Eigene Idee}
+Durch den Webkomponenten-Standard wird es möglich sein, ausschließlich Komponenten zur Erstellung einer Webanwendung zu nutzen. Um die Grenzen der Nutzung von herkömmlichen Webkomponenten zu überschreiten, und die Verwendung auszuweiten, entwickelte sich die Idee, Webkomponenten gänzlich, oder Teile des Standards, zum Schreiben von CRUD-Anwendungen, und wie in Kap.~\ref{cha:webapplication_structure} erwähnt, die einzelnen Schichten durch Webkomponenten zu realisieren, oder mit den Ebenen durch diese Technologie zu kommunizieren. Sozusagen sollen die Schichten -- Darstellung, Logik, Datenverwaltung -- , welche in Abb.~\ref{fig:3-stufen-architektur} gezeigt sind, mit Webkomponenten realisiert werden. 
 
 \paragraph{Darstellung:}Für diese gibt es bereits konkrete Ansätze und zahlreiche, vorgefertigte Komponenten zur Wiederverwendung\footnote{https://www.webcomponents.org/}.
 
@@ -51,7 +51,7 @@ Durch den Webkomponenten-Standard wird es möglich sein, Komponenten ausschließ
 Um nun den Grundgedanken der Webkomponenten zu vertiefen, und diese Technologie ausschließlich zur Erstellung einer CRUD-Anwendung zu nutzen, werden folgende Anforderungen gestellt, gruppiert nach Stufen:
 
 \subsection{Darstellung}
-Die Anwendung soll eine rudimentäre Benutzeroberfläche zur Verfügung stellen, um alle CRUD-Operationen dem Benutzer zu ermöglichen. 
+Die Anwendung soll eine rudimentäre Benutzeroberfläche zur Verfügung stellen, um dem Benutzer alle CRUD-Operationen zu ermöglichen. 
 Für das Erstellen soll ein Formular das Eingeben und Bestätigen von Daten ermöglichen.
 Das Auflisten aller vorhandenen Datensätze in einer Tabelle gewährleistet das Lesen.
 Ein Formular, wie beim Erstellen, soll mit den Daten des spezifischen Datensatzes ausgefüllt sein, und das Aktualisieren den Nutzenden überlassen.
@@ -60,5 +60,5 @@ Das Löschen soll über einen einfachen Auslöser machbar sein.
 So weit es die Webkomponenten zulassen, soll der Server mit diesen strukturiert und konfiguriert werden.
 
 \subsection{Datenverwaltung}
-Die Interaktion mit der Datenbank soll durch Webkomponenten das Erstellen, Lesen, Aktualisieren und Löschen eines Datensatzes ermöglichen. Das bedeutet, alle CRUD-Operationen sollen durch Webkomponenten ausführbar sein. 
+Die Interaktion mit der Datenbank soll durch serverseitige Webkomponenten das Erstellen, Lesen, Aktualisieren und Löschen eines Datensatzes ermöglichen. Das bedeutet, alle CRUD-Operationen sollen durch Webkomponenten ausführbar sein. 
 
